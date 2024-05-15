@@ -1,0 +1,297 @@
+@import "root/root.css";
+@import "root/header.css";
+@import "root/main.css";
+
+/* КОНТЕЙНЕР С ОПИСАНИЕМ */
+
+.main-description {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    background: url(../img/main-description-black.jpg) no-repeat center center fixed;
+    height: 75vh;
+    /* height: 740px; */
+    width: 100vw;
+    background-size: cover;
+}
+
+.description-img {
+    height: 640px;
+    filter: blur(102px);
+}
+
+.container-description {
+    top: 50%;
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    gap: 80px;
+}
+
+.description-text {
+    width: 465px;
+}
+
+.text {
+    font-style: bold;
+    font-weight: 700;
+    font-size: 35px;
+    line-height: 118%;
+    text-align: left;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    color: white;
+}
+
+.description-item {
+    display: flex;
+    flex-wrap: wrap;
+    width: 672px;
+}
+
+.table-one{
+    border-bottom: 1px solid #000000;
+    border-right: 1px solid #000000;
+    padding-top: 0;
+}
+
+.table-two {
+    border-bottom: 1px solid #000000;
+    padding-top: 0;
+}
+
+.table-three {
+    padding-bottom: 0;
+    border-right: 1px solid #000000;
+}
+
+.table-four {
+    padding-bottom: 0;
+}
+
+.item-table {
+    width: 50%;
+    padding: 30px 28px;
+}
+
+.table-title {
+    font-style: normal;
+    font-weight: 700;
+    font-weight: 700;
+    font-size: 35px;
+    line-height: 118%;
+    color: rgb(255, 255, 255);
+}
+
+.table-title span {
+    color: #3CA0E7;
+}
+
+.table-title strong {
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.table-text {
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 160%;
+    color: #ffffff;
+    margin-top: 15px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+
+
+/* ОПИСАНИЕ КОМПАНИИ */
+
+ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+img {
+    max-width: 100%;
+    height: auto;
+}
+section {
+    padding: 60px 0;
+   /* min-height: 100vh;*/
+}
+
+.row {
+    display: flex;
+    flex-direction: row-reverse;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+}
+
+.sec-title{
+    position:relative;
+    z-index: 1;
+    margin-bottom:60px;
+}
+
+.sec-title .title{
+    position: relative;
+    display: block;
+    font-size: 18px;
+    line-height: 24px;
+    color: #3ca0e7;
+    font-weight: 500;
+    margin-bottom: 15px;
+}
+
+.sec-title h2{
+    position: relative;
+    display: block;
+    font-size:40px;
+    line-height: 1.28em;
+    color: #222222;
+    font-weight: 600;
+    padding-bottom:18px;
+}
+
+.sec-title h2:before{
+    position:absolute;
+    content:'';
+    left:0px;
+    bottom:0px;
+    width:50px;
+    height:3px;
+    background-color:#d1d2d6;
+}
+
+.sec-title .text-company{
+    position: relative;
+    font-size: 16px;
+    line-height: 26px;
+    color: #848484;
+    font-weight: 400;
+    margin-top: 35px;
+}
+
+.sec-title.light h2{
+    color: #ffffff;
+}
+
+.sec-title.text-center h2:before{
+    left:50%;
+    margin-left: -25px;
+}
+
+.list-style-one{
+    position:relative;
+}
+
+.list-style-one li:before {
+    content: "•";
+    color: #3ca0e7;
+    margin-right: 10px;
+}
+
+.about-section{
+    position: relative;
+    padding: 120px 0 70px;
+}
+
+.about-section .sec-title{
+    margin-bottom: 45px;
+}
+
+.about-section .content-column{
+    position: relative;
+    margin-bottom: 50px;
+}
+
+.about-section .content-column .inner-column{
+    position: relative;
+    padding-left: 80px;
+    width: 800px;
+}
+
+.about-section .text-company{
+    margin-bottom: 40px;
+    font-size: 16px;
+    line-height: 26px;
+    color: #848484;
+    font-weight: 400;
+}
+
+.about-section .list-style-one{
+    margin-bottom: 45px;
+}
+
+.about-section .image-column{
+    position: relative;
+}
+
+.about-section .image-column .text-layer{
+    position: absolute;
+    right: -110px;
+    top: 50%;
+    font-size: 325px;
+    line-height: 1em;
+    color: #ffffff;
+    margin-top: -175px;
+    font-weight: 500;
+}
+
+.about-section .image-column .inner-column{
+    position: relative;
+    padding-left: 120px;
+    padding-bottom: 125px;
+}
+
+.about-section .image-column .inner-column:before{
+    position: absolute;
+    left: -75px;
+    top: 65px;
+    height: 520px;
+    width: 520px;
+    background-image:url(https://i.ibb.co/fxJ1jtC/about-circle-1.png);
+    content: "";
+}
+
+.about-section .image-column .image-1{
+    position: relative;
+}
+
+.about-section .image-column .image-2{
+    position: absolute;
+    left: 0;
+    bottom: 0;
+}
+
+.about-section .image-column .image-2 img,
+.about-section .image-column .image-1 img{
+    box-shadow: 0 30px 50px rgba(8,13,62,.15);
+}
+
+.about-section .image-column .video-link{
+    position: absolute;
+    left: 70px;
+    top: 170px;
+}
+
+.about-section .image-column .video-link .link{
+    position: relative;
+    display: block;
+    font-size: 22px;
+    color: #191e34;
+    font-weight: 400;
+    text-align: center;
+    height: 100px;
+    width: 100px;
+    line-height: 100px;
+    background-color: #ffffff;
+    border-radius: 50%;
+    box-shadow: 0 30px 50px rgba(8,13,62,.15);
+    -webkit-transition: all 300ms ease;
+    -moz-transition: all 300ms ease;
+    -ms-transition: all 300ms ease;
+    -o-transition: all 300ms ease;
+    transition: all 300ms ease;
+}

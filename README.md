@@ -1,1 +1,1 @@
-# TSU-coursePractice
+# TSU-course-practice
