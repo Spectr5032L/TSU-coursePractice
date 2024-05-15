@@ -1,5 +1,5 @@
 a {
-    color: black;
+    color: black !important;
 
     &:hover {
         color: #3ca0e7;
