@@ -1,7 +1,7 @@
 @import "root/root.css";
 @import "root/header.css";
 @import "root/main.css";
-
+@import "root/footer.css";
 
 
 /* КОНТЕЙНЕР С ОПИСАНИЕМ */
@@ -13,7 +13,7 @@
     background: url(../img/main-description-black.jpg) no-repeat center center fixed;
     height: 75vh;
     /* height: 740px; */
-    width: 100vw;
+    width: 99vw;
     background-size: cover;
 }
 
@@ -472,7 +472,7 @@ Vertical Tabs .mdl-tabs__panel {
     padding-left: 10vw;
     padding-right: 10vw;
     padding-top: 5vh;
-    padding-bottom: 20vh;
+    padding-bottom: 10vh;
 }
 
 .main-tabsInfo ul,
