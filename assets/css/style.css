@@ -2,6 +2,8 @@
 @import "root/header.css";
 @import "root/main.css";
 
+
+
 /* КОНТЕЙНЕР С ОПИСАНИЕМ */
 
 .main-description {
@@ -299,6 +301,7 @@ section {
 }
 
 
+
 /* СПЕЦИАЛИЗАЦИЯ РАБОЧИХ */
 
 Vertical Tabs .mdl-tabs__panel {
@@ -461,6 +464,8 @@ Vertical Tabs .mdl-tabs__panel {
     display: none;
 }
 
+
+
 /* TABS С ИНФОРМАЦИЕЙ */
 
 #container {
@@ -470,19 +475,21 @@ Vertical Tabs .mdl-tabs__panel {
     padding-bottom: 20vh;
 }
 
-.main-tabsInfo ul, ol {
+.main-tabsInfo ul,
+ol {
     margin: 0;
     padding: 0;
     list-style: none;
 }
 
-.tabs-content span{
+.tabs-content span {
     color: #3ca0e7;
 }
 
 .tabs-nav li {
     display: inline-block;
-    background: rgba(0, 0, 0, 0.78); /* #146096 */
+    background: rgba(0, 0, 0, 0.78);
+    /* #146096 */
     color: #fefefe;
     border-width: 1px 1px 0 1px;
     border-style: solid;
@@ -490,7 +497,7 @@ Vertical Tabs .mdl-tabs__panel {
     margin-right: 5px;
 }
 
-.tabs-nav a{
+.tabs-nav a {
     display: block;
     padding: 10px 15px;
     font-weight: bold;
@@ -516,4 +523,113 @@ Vertical Tabs .mdl-tabs__panel {
 
 .tabs-content div:not(:first-child) {
     display: none;
+}
+
+
+
+/* ОТЗЫВЫ КЛИЕНТОВ */
+
+section.t-bq-section {
+    padding: 30px;
+    margin-bottom: 60px;
+}
+
+.t-bq-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.t-bq-wrapper.t-bq-wrapper-boxed {
+    max-width: 676px;
+    /* margin: 0 auto; */
+}
+
+.t-bq-wrapper.t-bq-wrapper-fullwidth {
+    max-width: 100%;
+}
+
+.t-bq-wrapper .t-bq-quote {
+    padding: 20px;
+}
+
+.t-bq-quote-emma {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    min-height: 250px;
+    background: #ffffff;
+    padding: 0 !important;
+    align-items: stretch;
+    border-radius: 20px;
+    box-shadow: 2px 2px 25px #cecece;
+}
+
+.t-bq-quote-emma .t-bq-quote-emma-qmark {
+    position: absolute;
+    top: -30px;
+    left: calc(50% - 30px);
+    background: #ffffff;
+    width: 60px;
+    height: 60px;
+    border-radius: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: Impact, Garamond, Georgia, serif;
+    font-size: 42pt;
+    color: #666666;
+    line-height: 60px;
+    user-select: none;
+    -moz-user-select: none;
+    -o-user-select: none;
+    -ms-user-select: none;
+    border-top: 2px solid #eeeeee;
+}
+
+.t-bq-quote-emma .t-bq-quote-emma-qmark span {
+    padding-top: 0.25em;
+}
+
+.t-bq-quote-emma .t-bq-quote-emma-userpic {
+    flex-basis: 150px;
+    width: 450px;
+    min-width: 150px;
+    max-height: auto;
+    /* background: url(""); */
+    background-size: cover;
+    border-radius: 20px 0 0 20px;
+}
+
+.t-bq-quote-emma .t-bq-quote-emma-base {
+    flex-basis: calc(100% - 150px);
+    padding: 60px 30px 45px 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.t-bq-quote-emma .t-bq-quote-emma-base .t-bq-quote-emma-text {
+    font-size: 16px;
+    line-height: 30px;
+}
+
+.t-bq-quote-emma .t-bq-quote-emma-base .t-bq-quote-emma-text:after {
+    content: "\2014\00A0" attr(cite);
+    display: block;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+.t-bq-section button {
+    background: none;
+    border: none;
+    padding: 0 80px;
+    font: inherit;
+    cursor: pointer;
+    outline: inherit;
 }

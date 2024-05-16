@@ -373,7 +373,68 @@
                     </section>
                 </div>
             </div>
-            
+            <div class="main-reviews">
+                <section class="t-bq-section" id="emma">
+                    <button id="prevButton" style="font-size: 60px;">ᐸ</button>
+                    <div class="t-bq-wrapper t-bq-wrapper-boxed" id="testimonial1">
+                        <div class="t-bq-quote t-bq-quote-emma">
+                            <div class="t-bq-quote-emma-qmark"><span>&#10077;</span></div>
+                            <div class="t-bq-quote-emma-base">
+                                <blockquote class="t-bq-quote-emma-text" cite="Екатерина Петрова">
+                                    Сотрудничество с вашей компанией принесло нам отличные результаты! Профессиональный подход, 
+                                    внимательное отношение к нашим требованиям и оперативность в поиске кандидатов сделали наше сотрудничество приятным и продуктивным.
+                                </blockquote>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="t-bq-wrapper t-bq-wrapper-boxed hidden" id="testimonial2">
+                        <div class="t-bq-quote t-bq-quote-emma">
+                            <div class="t-bq-quote-emma-qmark"><span>&#10077;</span></div>
+                            <div class="t-bq-quote-emma-base">
+                                <blockquote class="t-bq-quote-emma-text" cite="Алексей Иванов">
+                                    Благодаря вашей помощи мы быстро нашли кандидата, который идеально подходит для нашей компании. 
+                                    Ваши специалисты проявили высокий уровень профессионализма и внимательно выслушали наши требования. 
+                                    Рекомендую вашу компанию всем, кто ищет качественный подбор персонала.
+                                </blockquote>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="t-bq-wrapper t-bq-wrapper-boxed hidden" id="testimonial3">
+                        <div class="t-bq-quote t-bq-quote-emma">
+                            <div class="t-bq-quote-emma-qmark"><span>&#10077;</span></div>
+                            <div class="t-bq-quote-emma-base">
+                                <blockquote class="t-bq-quote-emma-text" cite="Ольга Смирнова">
+                                    Очень довольна результатами сотрудничества с вашей компанией. Благодаря вашему эффективному подходу к поиску кандидатов, 
+                                    мы быстро заполнили вакансию и получили высококвалифицированного специалиста. Спасибо за ваш профессионализм и внимательное отношение к нашим потребностям.
+                                </blockquote>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="t-bq-wrapper t-bq-wrapper-boxed hidden" id="testimonial4">
+                        <div class="t-bq-quote t-bq-quote-emma">
+                            <div class="t-bq-quote-emma-qmark"><span>&#10077;</span></div>
+                            <div class="t-bq-quote-emma-base">
+                                <blockquote class="t-bq-quote-emma-text" cite="Иван Сергеев">
+                                    Работа с вашей компанией превзошла все мои ожидания. Вы нашли для нас идеального кандидата, который не только отлично вписался в нашу команду, 
+                                    но и превзошел наши ожидания своими навыками и профессионализмом. Огромное спасибо за ваше внимание к деталям и быструю реакцию на наши запросы
+                                </blockquote>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="t-bq-wrapper t-bq-wrapper-boxed hidden" id="testimonial5">
+                        <div class="t-bq-quote t-bq-quote-emma">
+                            <div class="t-bq-quote-emma-qmark"><span>&#10077;</span></div>
+                            <div class="t-bq-quote-emma-base">
+                                <blockquote class="t-bq-quote-emma-text" cite="Мария Козлова">
+                                    Сотрудничество с вашей компанией стало для нас настоящим открытием! Ваша команда проявила высокий уровень профессионализма и глубокое понимание наших потребностей. 
+                                    Благодаря вам, мы смогли найти идеального кандидата для нашей вакансии. Спасибо за ваше отличное обслуживание и качественную работу.
+                                </blockquote>
+                            </div>
+                        </div>
+                    </div>
+                    <button id="nextButton" style="font-size: 60px;">ᐳ</button>
+                </section>
+            </div>
         </div>
     </main>
 
@@ -381,16 +442,13 @@
 
 <script>
     document.addEventListener("DOMContentLoaded", function () {
-        // Get all tabs and tab content
         var tabs = document.querySelectorAll(".tabs-nav li");
         var tabContents = document.querySelectorAll(".tabs-content div");
 
-        // Add click event listener to each tab
         tabs.forEach(function (tab, index) {
             tab.addEventListener("click", function (event) {
                 event.preventDefault();
 
-                // Remove 'active' class from all tabs and hide all tab contents
                 tabs.forEach(function (tab) {
                     tab.classList.remove("active");
                 });
@@ -398,12 +456,46 @@
                     content.style.display = "none";
                 });
 
-                // Add 'active' class to the clicked tab and display its corresponding content
                 this.classList.add("active");
                 tabContents[index].style.display = "block";
             });
         });
     });
+
+
+
+    const testimonials = document.querySelectorAll('.t-bq-wrapper');
+        let currentTestimonialIndex = 0;
+
+        function showTestimonial(index) {
+            testimonials.forEach((testimonial, idx) => {
+                if (idx === index) {
+                    testimonial.classList.remove('hidden');
+                } else {
+                    testimonial.classList.add('hidden');
+                }
+            });
+        }
+
+        function nextTestimonial() {
+            currentTestimonialIndex++;
+            if (currentTestimonialIndex === testimonials.length) {
+                currentTestimonialIndex = 0;
+            }
+            showTestimonial(currentTestimonialIndex);
+        }
+
+        function prevTestimonial() {
+            currentTestimonialIndex--;
+            if (currentTestimonialIndex < 0) {
+                currentTestimonialIndex = testimonials.length - 1;
+            }
+            showTestimonial(currentTestimonialIndex);
+        }
+
+        showTestimonial(currentTestimonialIndex);
+        document.getElementById('nextButton').addEventListener('click', nextTestimonial);
+        document.getElementById('prevButton').addEventListener('click', prevTestimonial);
 </script>
 
 </html>
