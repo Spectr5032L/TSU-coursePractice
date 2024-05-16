@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="assets/css/style.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/material-design-lite/material.min.css">
     <script src="https://cdn.jsdelivr.net/npm/material-design-lite/material.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 
 <body>
@@ -78,7 +79,7 @@
             <div class="main-about">
                 <section class="about-section">
                     <div class="container">
-                        <div class="row">
+                        <div class="container-row">
                             <div class="content-column col-lg-6 col-md-12 col-sm-12 order-2">
                                 <div class="inner-column">
                                     <div class="sec-title">
@@ -546,6 +547,34 @@
                 </div>
             </div>
             <div class="main-formCons">
+                <section class="get-in-touch">
+                    <h1 class="title">Форма для связи</h1>
+                    <form class="contact-form row">
+                        <div class="form-field col x-100">
+                            <input id="email" class="input-text js-input" type="email" required>
+                            <label class="label" for="email">E-mail</label>
+                        </div>
+                        <div class="form-field col x-50">
+                            <input id="name" class="input-text js-input" type="text" required>
+                            <label class="label" for="name">Имя</label>
+                        </div>
+                        <div class="form-field col x-50">
+                            <input id="phone" class="input-text js-input" type="text" required>
+                            <label class="label" for="phone">Телефон</label>
+                        </div>
+                        <div class="form-field col x-50">
+                            <input id="company" class="input-text js-input" type="text" required>
+                            <label class="label" for="company">Название вашей компании</label>
+                        </div>
+                        <div class="form-field col x-50">
+                            <input id="message" class="input-text js-input" type="text" required>
+                            <label class="label" for="message">Какой специалист требуется</label>
+                        </div>
+                        <div class="form-field col x-100 align-center">
+                            <input class="submit-btn" type="submit" value="Submit">
+                        </div>
+                    </form>
+                </section>
             </div>
         </div>
     </main>
@@ -626,6 +655,26 @@
     }
 
     items.forEach(item => item.addEventListener('click', toggleAccordion));
+
+
+
+    $('.js-input').keyup(function () {
+        if ($(this).val()) {
+            $(this).addClass('not-empty');
+        } else {
+            $(this).removeClass('not-empty');
+        }
+    });
+
+    $('.js-input').focus(function () {
+        $(this).siblings('.label').addClass('focused');
+    });
+
+    $('.js-input').blur(function () {
+        if (!$(this).val()) {
+            $(this).siblings('.label').removeClass('focused');
+        }
+    });
 </script>
 
 </html>
