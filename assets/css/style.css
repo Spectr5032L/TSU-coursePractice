@@ -48,7 +48,7 @@
     width: 672px;
 }
 
-.table-one{
+.table-one {
     border-bottom: 1px solid #000000;
     border-right: 1px solid #000000;
     padding-top: 0;
@@ -109,13 +109,15 @@ ul {
     padding: 0;
     list-style: none;
 }
+
 img {
     max-width: 100%;
     height: auto;
 }
+
 section {
     padding: 60px 0;
-   /* min-height: 100vh;*/
+    /* min-height: 100vh;*/
 }
 
 .row {
@@ -128,13 +130,13 @@ section {
     justify-content: center;
 }
 
-.sec-title{
-    position:relative;
+.sec-title {
+    position: relative;
     z-index: 1;
-    margin-bottom:60px;
+    margin-bottom: 60px;
 }
 
-.sec-title .title{
+.sec-title .title {
     position: relative;
     display: block;
     font-size: 18px;
@@ -144,27 +146,27 @@ section {
     margin-bottom: 15px;
 }
 
-.sec-title h2{
+.sec-title h2 {
     position: relative;
     display: block;
-    font-size:40px;
+    font-size: 40px;
     line-height: 1.28em;
     color: #222222;
     font-weight: 600;
-    padding-bottom:18px;
+    padding-bottom: 18px;
 }
 
-.sec-title h2:before{
-    position:absolute;
-    content:'';
-    left:0px;
-    bottom:0px;
-    width:50px;
-    height:3px;
-    background-color:#d1d2d6;
+.sec-title h2:before {
+    position: absolute;
+    content: '';
+    left: 0px;
+    bottom: 0px;
+    width: 50px;
+    height: 3px;
+    background-color: #d1d2d6;
 }
 
-.sec-title .text-company{
+.sec-title .text-company {
     position: relative;
     font-size: 16px;
     line-height: 26px;
@@ -173,17 +175,17 @@ section {
     margin-top: 35px;
 }
 
-.sec-title.light h2{
+.sec-title.light h2 {
     color: #ffffff;
 }
 
-.sec-title.text-center h2:before{
-    left:50%;
+.sec-title.text-center h2:before {
+    left: 50%;
     margin-left: -25px;
 }
 
-.list-style-one{
-    position:relative;
+.list-style-one {
+    position: relative;
 }
 
 .list-style-one li:before {
@@ -192,27 +194,27 @@ section {
     margin-right: 10px;
 }
 
-.about-section{
+.about-section {
     position: relative;
     padding: 120px 0 70px;
 }
 
-.about-section .sec-title{
+.about-section .sec-title {
     margin-bottom: 45px;
 }
 
-.about-section .content-column{
+.about-section .content-column {
     position: relative;
     margin-bottom: 50px;
 }
 
-.about-section .content-column .inner-column{
+.about-section .content-column .inner-column {
     position: relative;
     padding-left: 80px;
     width: 800px;
 }
 
-.about-section .text-company{
+.about-section .text-company {
     margin-bottom: 40px;
     font-size: 16px;
     line-height: 26px;
@@ -220,15 +222,15 @@ section {
     font-weight: 400;
 }
 
-.about-section .list-style-one{
+.about-section .list-style-one {
     margin-bottom: 45px;
 }
 
-.about-section .image-column{
+.about-section .image-column {
     position: relative;
 }
 
-.about-section .image-column .text-layer{
+.about-section .image-column .text-layer {
     position: absolute;
     right: -110px;
     top: 50%;
@@ -239,44 +241,44 @@ section {
     font-weight: 500;
 }
 
-.about-section .image-column .inner-column{
+.about-section .image-column .inner-column {
     position: relative;
     padding-left: 120px;
     padding-bottom: 125px;
 }
 
-.about-section .image-column .inner-column:before{
+.about-section .image-column .inner-column:before {
     position: absolute;
     left: -75px;
     top: 65px;
     height: 520px;
     width: 520px;
-    background-image:url(https://i.ibb.co/fxJ1jtC/about-circle-1.png);
+    background-image: url(https://i.ibb.co/fxJ1jtC/about-circle-1.png);
     content: "";
 }
 
-.about-section .image-column .image-1{
+.about-section .image-column .image-1 {
     position: relative;
 }
 
-.about-section .image-column .image-2{
+.about-section .image-column .image-2 {
     position: absolute;
     left: 0;
     bottom: 0;
 }
 
 .about-section .image-column .image-2 img,
-.about-section .image-column .image-1 img{
-    box-shadow: 0 30px 50px rgba(8,13,62,.15);
+.about-section .image-column .image-1 img {
+    box-shadow: 0 30px 50px rgba(8, 13, 62, .15);
 }
 
-.about-section .image-column .video-link{
+.about-section .image-column .video-link {
     position: absolute;
     left: 70px;
     top: 170px;
 }
 
-.about-section .image-column .video-link .link{
+.about-section .image-column .video-link .link {
     position: relative;
     display: block;
     font-size: 22px;
@@ -288,7 +290,7 @@ section {
     line-height: 100px;
     background-color: #ffffff;
     border-radius: 50%;
-    box-shadow: 0 30px 50px rgba(8,13,62,.15);
+    box-shadow: 0 30px 50px rgba(8, 13, 62, .15);
     -webkit-transition: all 300ms ease;
     -moz-transition: all 300ms ease;
     -ms-transition: all 300ms ease;
@@ -305,15 +307,11 @@ Vertical Tabs .mdl-tabs__panel {
 
 .main-specialization {
     width: 72vw;
+    padding-bottom: 70px;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
-}
-
-.main-specialization h5 {
-    font-size: 18px;
-    color: #3ca0e7;
 }
 
 .mdl-tabs__panel-text {
@@ -368,6 +366,8 @@ Vertical Tabs .mdl-tabs__panel {
 
 .text-center {
     text-align: center;
+    font-size: 18px;
+    color: #3ca0e7;
 }
 
 /* .mdl-tabs.is-upgraded .mdl-tabs__tab.is-active {
@@ -377,3 +377,76 @@ Vertical Tabs .mdl-tabs__panel {
 
 
 /* СТЭК ТЕХНОЛОГИЙ */
+
+.main-stack {
+    padding-bottom: 70px;
+
+}
+
+.stack-text {
+    width: 565px;
+}
+
+.stack-text h3 {
+    font-size: 46px;
+}
+
+.stack-text div {
+    font-size: 16px;
+    font-weight: 600;
+    color: rgb(152, 152, 152);
+}
+
+.stack-container {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    gap: 150px;
+}
+
+.faq-content {
+    margin: 0 auto;
+    width: 600px;
+}
+
+.faq-question {
+    padding: 20px 0;
+    border-bottom: 1px dotted #ccc;
+}
+
+.panel-title {
+    font-size: 24px;
+    width: 100%;
+    position: relative;
+    margin: 0;
+    padding: 10px 10px 0 48px;
+    display: block;
+    cursor: pointer;
+}
+
+.panel-content {
+    font-size: 20px;
+    padding: 0px 14px;
+    margin: 0 40px;
+    height: 0;
+    overflow: hidden;
+    z-index: -1;
+    position: relative;
+    opacity: 0;
+    -webkit-transition: .4s ease;
+    -moz-transition: .4s ease;
+    -o-transition: .4s ease;
+    transition: .4s ease;
+}
+
+.panel:checked~.panel-content {
+    height: auto;
+    opacity: 1;
+    padding: 14px;
+}
+
+.panel {
+    display: none;
+}
+
+/* TABS С ИНФОРМАЦИЕЙ */
