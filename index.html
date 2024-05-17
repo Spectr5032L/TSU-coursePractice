@@ -4,7 +4,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>HUBIT • Главная</title>
+
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/favicon_io/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon_io/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon_io/favicon-16x16.png">
+    <link rel="manifest" href="assets/favicon_io/site.webmanifest">
+
     <link rel="stylesheet" href="assets/css/style.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/material-design-lite/material.min.css">
     <script src="https://cdn.jsdelivr.net/npm/material-design-lite/material.min.js"></script>
@@ -608,104 +614,13 @@
             <a class="footer-up" href="#header">Наверх <span>↑</span></a>
         </div>
     </footer>
-    
-    
+
+
 </body>
 
-<script>
-    document.addEventListener("DOMContentLoaded", function () {
-        var tabs = document.querySelectorAll(".tabs-nav li");
-        var tabContents = document.querySelectorAll(".tabs-content div");
-
-        tabs.forEach(function (tab, index) {
-            tab.addEventListener("click", function (event) {
-                event.preventDefault();
-
-                tabs.forEach(function (tab) {
-                    tab.classList.remove("active");
-                });
-                tabContents.forEach(function (content) {
-                    content.style.display = "none";
-                });
-
-                this.classList.add("active");
-                tabContents[index].style.display = "block";
-            });
-        });
-    });
-
-
-
-    const testimonials = document.querySelectorAll('.t-bq-wrapper');
-    let currentTestimonialIndex = 0;
-
-    function showTestimonial(index) {
-        testimonials.forEach((testimonial, idx) => {
-            if (idx === index) {
-                testimonial.classList.remove('hidden');
-            } else {
-                testimonial.classList.add('hidden');
-            }
-        });
-    }
-
-    function nextTestimonial() {
-        currentTestimonialIndex++;
-        if (currentTestimonialIndex === testimonials.length) {
-            currentTestimonialIndex = 0;
-        }
-        showTestimonial(currentTestimonialIndex);
-    }
-
-    function prevTestimonial() {
-        currentTestimonialIndex--;
-        if (currentTestimonialIndex < 0) {
-            currentTestimonialIndex = testimonials.length - 1;
-        }
-        showTestimonial(currentTestimonialIndex);
-    }
-
-    showTestimonial(currentTestimonialIndex);
-    document.getElementById('nextButton').addEventListener('click', nextTestimonial);
-    document.getElementById('prevButton').addEventListener('click', prevTestimonial);
-
-
-
-    const items = document.querySelectorAll(".accordion button");
-
-    function toggleAccordion() {
-        const itemToggle = this.getAttribute('aria-expanded');
-
-        for (i = 0; i < items.length; i++) {
-            items[i].setAttribute('aria-expanded', 'false');
-        }
-
-        if (itemToggle == 'false') {
-            this.setAttribute('aria-expanded', 'true');
-        }
-    }
-
-    items.forEach(item => item.addEventListener('click', toggleAccordion));
-
-
-
-    $('.js-input').keyup(function () {
-        if ($(this).val()) {
-            $(this).addClass('not-empty');
-        } else {
-            $(this).removeClass('not-empty');
-        }
-    });
-
-    $('.js-input').focus(function () {
-        $(this).siblings('.label').addClass('focused');
-    });
-
-    $('.js-input').blur(function () {
-        if (!$(this).val()) {
-            $(this).siblings('.label').removeClass('focused');
-        }
-    });
-</script>
+<script src="JS/TabsInfo.js"></script>
+<script src="JS/Reviews.js"></script>
+<script src="JS/FAQ.js"></script>
+<script src="JS/FormCons.js"></script>
 
 </html>

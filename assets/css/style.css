@@ -310,11 +310,16 @@ Vertical Tabs .mdl-tabs__panel {
 
 .main-specialization {
     width: 80vw;
+    /* width: 1200px; */
     padding-bottom: 70px;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
+}
+
+.mdl-tabs {
+    margin-left: 25vw;
 }
 
 .main-specialization ul {
@@ -329,7 +334,7 @@ Vertical Tabs .mdl-tabs__panel {
 
 .vertical-mdl-tabs {
     margin-top: 15px;
-    margin-left: 25vw;
+    /* margin-left: 25vw; */
 }
 
 .vertical-mdl-tabs .mdl-tabs__tab-bar {
