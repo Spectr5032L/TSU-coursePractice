@@ -458,7 +458,7 @@ Vertical Tabs .mdl-tabs__panel {
     transition: .4s ease;
 }
 
-.panel:checked~.panel-content {
+.panel:checked ~ .panel-content {
     height: auto;
     opacity: 1;
     padding: 14px;
@@ -468,6 +468,14 @@ Vertical Tabs .mdl-tabs__panel {
     display: none;
 }
 
+.arrow {
+    display: inline-block;
+    transition: transform 0.4s ease;
+}
+
+.panel:checked + .panel-title .arrow {
+    transform: rotate(180deg);
+}
 
 
 /* TABS С ИНФОРМАЦИЕЙ */
@@ -652,6 +660,12 @@ section.t-bq-section {
     width: 48rem;
 }
 
+.main-stack ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
 .accordion {
     .accordion-item {
         border-bottom: 1px solid #e5e5e5;
@@ -735,7 +749,7 @@ section.t-bq-section {
 
         +.accordion-content {
             opacity: 1;
-            max-height: 9em;
+            max-height: 99em;
             transition: all 200ms linear;
             will-change: opacity, max-height;
         }
@@ -859,5 +873,44 @@ section.t-bq-section {
         padding: 8px 16px;
         border: none;
         cursor: pointer;
+    }
+}
+
+
+
+
+
+
+/* VACANCY */
+
+/* ОПИСАНИЕ */
+
+.main-faq ul{
+    margin: 0;
+    /* padding: 0; */
+    list-style: none;
+}
+
+.vacancy-description {
+    max-width: 560px;
+    font-size: 22px;
+    text-align: center;
+    margin-bottom: 8vh;
+    .title {
+        text-align: center;
+        text-transform: uppercase;
+        letter-spacing: 3px;
+        font-size: 36px;
+        line-height: 48px;
+    }
+}
+
+.container-faq {
+    .title {
+        text-align: center;
+        text-transform: uppercase;
+        letter-spacing: 3px;
+        font-size: 36px;
+        line-height: 48px;
     }
 }
