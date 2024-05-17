@@ -309,7 +309,7 @@ Vertical Tabs .mdl-tabs__panel {
 }
 
 .main-specialization {
-    /* width: 72vw; */
+    width: 80vw;
     padding-bottom: 70px;
     display: flex;
     justify-content: center;
@@ -786,7 +786,7 @@ section.t-bq-section {
     }
 }
 
-.get-in-touch {
+.formCons-in-touch {
     max-width: 650px;
     margin: 0 auto;
     position: relative;
