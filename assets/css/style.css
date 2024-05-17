@@ -309,7 +309,7 @@ Vertical Tabs .mdl-tabs__panel {
 }
 
 .main-specialization {
-    width: 72vw;
+    /* width: 72vw; */
     padding-bottom: 70px;
     display: flex;
     justify-content: center;
@@ -414,7 +414,6 @@ Vertical Tabs .mdl-tabs__panel {
 
 .stack-container {
     display: flex;
-    align-items: center;
     flex-direction: row;
     gap: 150px;
 }
