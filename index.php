@@ -1,5 +1,9 @@
+<?php 
+    require_once 'back/connect.php';
+?>
+
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 
 <head>
     <meta charset="UTF-8">
@@ -15,6 +19,20 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/material-design-lite/material.min.css">
     <script src="https://cdn.jsdelivr.net/npm/material-design-lite/material.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <script>
+        function showAlert(status) {
+            if (status === 'duplicate') {
+                alert('Запись с такими данными уже существует!');
+            } else if (status === 'success') {
+                alert('Запрос успешно отправлен, скоро мы с вами свяжемся!');
+            } else if (status === 'invalid_phone') {
+                alert('Некорректный номер телефона. Пожалуйста, введите правильный номер в формате: +7(905)470-35-99 или +79054703599 или 9054703599 или +7 (905) 470-3599.');
+            } else {
+                alert('Возникли непредвиденные проблемы');
+            }
+        }
+    </script>
 </head>
 
 <body>
@@ -42,7 +60,7 @@
                     </li>
                     <li><a href="#">Кандидатам &dtrif;</a>
                         <ul class="dropdown">
-                            <li><a href="vacancy.html">Вакансии</a></li>
+                            <li><a href="vacancy.php">Вакансии</a></li>
                             <li><a href="#">Обучение</a></li>
                         </ul>
                     </li>
@@ -395,72 +413,39 @@
                 <!-- <h5 class="text-center">Отзывы</h5> -->
                 <section class="t-bq-section" id="emma">
                     <button id="prevButton" style="font-size: 60px;">ᐸ</button>
-                    <div class="t-bq-wrapper t-bq-wrapper-boxed" id="testimonial1">
-                        <div class="t-bq-quote t-bq-quote-emma">
-                            <div class="t-bq-quote-emma-qmark"><span>&#10077;</span></div>
-                            <div class="t-bq-quote-emma-base">
-                                <blockquote class="t-bq-quote-emma-text" cite="Екатерина Петрова">
-                                    Сотрудничество с вашей компанией принесло нам отличные результаты! Профессиональный
-                                    подход,
-                                    внимательное отношение к нашим требованиям и оперативность в поиске кандидатов
-                                    сделали наше сотрудничество приятным и продуктивным.
-                                </blockquote>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="t-bq-wrapper t-bq-wrapper-boxed hidden" id="testimonial2">
-                        <div class="t-bq-quote t-bq-quote-emma">
-                            <div class="t-bq-quote-emma-qmark"><span>&#10077;</span></div>
-                            <div class="t-bq-quote-emma-base">
-                                <blockquote class="t-bq-quote-emma-text" cite="Алексей Иванов">
-                                    Благодаря вашей помощи мы быстро нашли кандидата, который идеально подходит для
-                                    нашей компании.
-                                    Ваши специалисты проявили высокий уровень профессионализма и внимательно выслушали
-                                    наши требования.
-                                    Рекомендую вашу компанию всем, кто ищет качественный подбор персонала.
-                                </blockquote>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="t-bq-wrapper t-bq-wrapper-boxed hidden" id="testimonial3">
-                        <div class="t-bq-quote t-bq-quote-emma">
-                            <div class="t-bq-quote-emma-qmark"><span>&#10077;</span></div>
-                            <div class="t-bq-quote-emma-base">
-                                <blockquote class="t-bq-quote-emma-text" cite="Ольга Смирнова">
-                                    Очень довольна результатами сотрудничества с вашей компанией. Благодаря вашему
-                                    эффективному подходу к поиску кандидатов,
-                                    мы быстро заполнили вакансию и получили высококвалифицированного специалиста.
-                                    Спасибо за ваш профессионализм и внимательное отношение к нашим потребностям.
-                                </blockquote>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="t-bq-wrapper t-bq-wrapper-boxed hidden" id="testimonial4">
-                        <div class="t-bq-quote t-bq-quote-emma">
-                            <div class="t-bq-quote-emma-qmark"><span>&#10077;</span></div>
-                            <div class="t-bq-quote-emma-base">
-                                <blockquote class="t-bq-quote-emma-text" cite="Иван Сергеев">
-                                    Работа с вашей компанией превзошла все мои ожидания. Вы нашли для нас идеального
-                                    кандидата, который не только отлично вписался в нашу команду,
-                                    но и превзошел наши ожидания своими навыками и профессионализмом. Огромное спасибо
-                                    за ваше внимание к деталям и быструю реакцию на наши запросы
-                                </blockquote>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="t-bq-wrapper t-bq-wrapper-boxed hidden" id="testimonial5">
-                        <div class="t-bq-quote t-bq-quote-emma">
-                            <div class="t-bq-quote-emma-qmark"><span>&#10077;</span></div>
-                            <div class="t-bq-quote-emma-base">
-                                <blockquote class="t-bq-quote-emma-text" cite="Мария Козлова">
-                                    Сотрудничество с вашей компанией стало для нас настоящим открытием! Ваша команда
-                                    проявила высокий уровень профессионализма и глубокое понимание наших потребностей.
-                                    Благодаря вам, мы смогли найти идеального кандидата для нашей вакансии. Спасибо за
-                                    ваше отличное обслуживание и качественную работу.
-                                </blockquote>
-                            </div>
-                        </div>
-                    </div>
+                    
+                    <?php
+                    // require_once 'back/connect.php';
+
+                    $query = "SELECT commentText, authorComment FROM Reviews";
+                    $result = mysqli_query($connect, $query);
+
+                    if ($result) {
+                        $counter = 1;
+                        while ($row = mysqli_fetch_assoc($result)) {
+                            $commentText = htmlspecialchars($row['commentText']);
+                            $authorComment = htmlspecialchars($row['authorComment']);
+                            $hiddenClass = $counter > 1 ? 'hidden' : '';
+                            echo "
+                            <div class='t-bq-wrapper t-bq-wrapper-boxed $hiddenClass' id='testimonial$counter'>
+                                <div class='t-bq-quote t-bq-quote-emma'>
+                                    <div class='t-bq-quote-emma-qmark'><span>&#10077;</span></div>
+                                    <div class='t-bq-quote-emma-base'>
+                                        <blockquote class='t-bq-quote-emma-text' cite='$authorComment'>
+                                            $commentText
+                                        </blockquote>
+                                    </div>
+                                </div>
+                            </div>";
+                            $counter++;
+                        }
+                    } else {
+                        echo "<p>Ошибка загрузки отзывов: " . mysqli_error($connect) . "</p>";
+                    }
+
+                    mysqli_close($connect);
+                    ?>
+
                     <button id="nextButton" style="font-size: 60px;">ᐳ</button>
                 </section>
             </div>
@@ -556,25 +541,25 @@
             <div id="form-cons" class="main-formCons">
                 <section class="formCons-in-touch">
                     <h1 class="title">Форма для связи</h1>
-                    <form class="contact-form row">
+                    <form class="contact-form row" action="back/crud/createCommunication.php" method="POST">
                         <div class="form-field col x-100">
-                            <input id="email" class="input-text js-input" type="email" required>
+                            <input id="email" name="email" class="input-text js-input" type="email" required>
                             <label class="label" for="email">E-mail</label>
                         </div>
                         <div class="form-field col x-50">
-                            <input id="name" class="input-text js-input" type="text" required>
+                            <input id="name" name="name" class="input-text js-input" type="text" required>
                             <label class="label" for="name">Ваше имя</label>
                         </div>
                         <div class="form-field col x-50">
-                            <input id="phone" class="input-text js-input" type="text" required>
+                            <input id="phone" name="phone" class="input-text js-input" type="text" required>
                             <label class="label" for="phone">Телефон</label>
                         </div>
                         <div class="form-field col x-50">
-                            <input id="company" class="input-text js-input" type="text" required>
+                            <input id="company" name="company" class="input-text js-input" type="text" required>
                             <label class="label" for="company">Название вашей компании</label>
                         </div>
                         <div class="form-field col x-50">
-                            <input id="message" class="input-text js-input" type="text" required>
+                            <input id="message" name="message" class="input-text js-input" type="text" required>
                             <label class="label" for="message">Какой специалист требуется</label>
                         </div>
                         <div class="form-field col x-100 align-center">
@@ -603,7 +588,7 @@
                     <a href="#stack">Стек технологий</a>
                 </div>
                 <div>
-                    <a href="vacancy.html">Вакансии</a>
+                    <a href="vacancy.php">Вакансии</a>
                     <a href="#">Обучение</a>
                     <a href="#about-company">Компания</a>
                 </div>
@@ -615,6 +600,12 @@
         </div>
     </footer>
 
+    <?php
+    if (isset($_GET['status'])) {
+        $status = $_GET['status'];
+        echo "<script>showAlert('$status');</script>";
+    }
+    ?>
 
 </body>
 

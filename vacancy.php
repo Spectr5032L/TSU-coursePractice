@@ -1,5 +1,9 @@
+<?php 
+    require_once 'back/connect.php';
+?>
+
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 
 <head>
     <meta charset="UTF-8">
@@ -15,6 +19,26 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/material-design-lite/material.min.css">
     <script src="https://cdn.jsdelivr.net/npm/material-design-lite/material.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <script>
+        function showAlert(status) {
+            if (status === 'duplicate') {
+                alert('Запись с такими данными уже существует!');
+            } else if (status === 'success') {
+                alert('Запрос успешно отправлен, скоро мы с вами свяжемся!');
+            } else if (status === 'invalid_phone') {
+                alert('Некорректный номер телефона. Пожалуйста, введите правильный номер в формате: +7(905)470-35-99 или +79054703599 или 9054703599 или +7 (905) 470-3599.');
+            } else if (status === 'skills_too_long') {
+                alert('Поле "Ваши навыки вкратце" не должно превышать 200 символов.');
+            } else if (status === 'reason_too_long') {
+                alert('Поле "Почему вы хотите работать у нас" не должно превышать 200 символов.');
+            } else if (status === 'position_too_long') {
+                alert('Поле "Должность" не должно превышать 30 символов.');
+            } else {
+                alert('Возникли непредвиденные проблемы');
+            }
+        }
+    </script>
 </head>
 
 <body>
@@ -35,9 +59,9 @@
                 <ul>
                     <li><a href="#">Компаниям &dtrif;</a>
                         <ul class="dropdown">
-                            <li><a href="index.html#specialization">Специализации</a></li>
+                            <li><a href="index.php#specialization">Специализации</a></li>
                             <li><a href="#">База специалистов</a></li>
-                            <li><a href="index.html#stack">Стек технологий</a></li>
+                            <li><a href="index.php#stack">Стек технологий</a></li>
                         </ul>
                     </li>
                     <li><a href="#">Кандидатам &dtrif;</a>
@@ -45,8 +69,8 @@
                             <li><a href="#">Обучение</a></li>
                         </ul>
                     </li>
-                    <li><a href="index.html#about-company">Компания</a></li>
-                    <li style="border-right: 2px solid #3ca0e7;"><a href="index.html#form-cons">Консультация</a></li>
+                    <li><a href="index.php#about-company">Компания</a></li>
+                    <li style="border-right: 2px solid #3ca0e7;"><a href="index.php#form-cons">Консультация</a></li>
                 </ul>
             </nav>
         </div>
@@ -142,33 +166,33 @@
             <div class="vacancy-form">
                 <section class="formCons-in-touch">
                     <h1 class="title">Откликнуться</h1>
-                    <form class="contact-form row">
+                    <form class="contact-form row" action="back/crud/createContact.php" method="POST">
                         <div class="form-field col x-100">
-                            <input id="email" class="input-text js-input" type="email" required>
+                            <input id="email" name="email" class="input-text js-input" type="email" required>
                             <label class="label" for="email">E-mail</label>
                         </div>
                         <div class="form-field col x-50">
-                            <input id="name" class="input-text js-input" type="text" required>
+                            <input id="name" name="name" class="input-text js-input" type="text" required>
                             <label class="label" for="name">Ваше имя</label>
                         </div>
                         <div class="form-field col x-50">
-                            <input id="phone" class="input-text js-input" type="text" required>
+                            <input id="phone" name="phone" class="input-text js-input" type="text" required>
                             <label class="label" for="phone">Телефон</label>
                         </div>
                         <div class="form-field col x-50">
-                            <input id="position" class="input-text js-input" type="text" required>
+                            <input id="position" name="position" class="input-text js-input" type="text" required>
                             <label class="label" for="position">Должность</label>
                         </div>
                         <div class="form-field col x-50">
-                            <input id="city" class="input-text js-input" type="text" required>
+                            <input id="city" name="city" class="input-text js-input" type="text" required>
                             <label class="label" for="city">Город трудоустройства</label>
                         </div>
                         <div class="form-field col x-100">
-                            <input id="company" class="input-text js-input" type="text" required>
-                            <label class="label" for="company">Ваши навыки вкратце</label>
+                            <input id="skills" name="skills" class="input-text js-input" type="text" required>
+                            <label class="label" for="skills">Ваши навыки вкратце</label>
                         </div>
                         <div class="form-field col x-100">
-                            <input id="reason" class="input-text js-input" type="text" required>
+                            <input id="reason" name="reason" class="input-text js-input" type="text" required>
                             <label class="label" for="reason">Почему вы хотите работать у нас</label>
                         </div>
                         <div class="form-field col x-100 align-center">
@@ -192,25 +216,33 @@
             </div>
             <div class="footer-links">
                 <div>
-                    <a href="#specialization">Специализации</a>
+                    <a href="index.php#specialization">Специализации</a>
                     <a href="#">База специалистов</a>
-                    <a href="#stack">Стек технологий</a>
+                    <a href="index.php#stack">Стек технологий</a>
                 </div>
                 <div>
-                    <a href="#">Вакансии</a>
+                    <a href="vacancy.php">Вакансии</a>
                     <a href="#">Обучение</a>
-                    <a href="#about-company">Компания</a>
+                    <a href="index.php#about-company">Компания</a>
                 </div>
                 <div>
-                    <a href="#form-cons">Консультация</a>
+                    <a href="index.php#form-cons">Консультация</a>
                 </div>
             </div>
             <a class="footer-up" href="#header">Наверх <span>↑</span></a>
         </div>
     </footer>
 
+    <?php
+    if (isset($_GET['status'])) {
+        $status = $_GET['status'];
+        echo "<script>showAlert('$status');</script>";
+    }
+    ?>
+
 </body>
 
 <script src="JS/FAQ.js"></script>
+<script src="JS/FormCons.js"></script>
 
 </html>
