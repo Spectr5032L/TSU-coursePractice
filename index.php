@@ -54,14 +54,14 @@
                     <li><a href="#">Компаниям &dtrif;</a>
                         <ul class="dropdown">
                             <li><a href="#specialization">Специализации</a></li>
-                            <li><a href="#">База специалистов</a></li>
+                            <!-- <li><a href="#">База специалистов</a></li> -->
                             <li><a href="#stack">Стек технологий</a></li>
                         </ul>
                     </li>
                     <li><a href="#">Кандидатам &dtrif;</a>
                         <ul class="dropdown">
                             <li><a href="vacancy.php">Вакансии</a></li>
-                            <li><a href="#">Обучение</a></li>
+                            <!-- <li><a href="#">Обучение</a></li> -->
                         </ul>
                     </li>
                     <li><a href="#about-company">Компания</a></li>
@@ -583,18 +583,18 @@
             </div>
             <div class="footer-links">
                 <div>
-                    <a href="#specialization">Специализации</a>
-                    <a href="#">База специалистов</a>
-                    <a href="#stack">Стек технологий</a>
+                    <a href="index.php#specialization">Специализации</a>
+                    <a href="index.php#form-cons">Консультация</a>
+                    <a href="index.php#stack">Стек технологий</a>
                 </div>
                 <div>
                     <a href="vacancy.php">Вакансии</a>
-                    <a href="#">Обучение</a>
-                    <a href="#about-company">Компания</a>
+                    <!-- <a href="#">Обучение</a> -->
+                    <a href="index.php#about-company">Компания</a>
                 </div>
-                <div>
-                    <a href="#form-cons">Консультация</a>
-                </div>
+                <!-- <div>
+                    <a href="index.php#form-cons">Консультация</a>
+                </div> -->
             </div>
             <a class="footer-up" href="#header">Наверх <span>↑</span></a>
         </div>

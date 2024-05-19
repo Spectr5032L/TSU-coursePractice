@@ -60,13 +60,14 @@
                     <li><a href="#">Компаниям &dtrif;</a>
                         <ul class="dropdown">
                             <li><a href="index.php#specialization">Специализации</a></li>
-                            <li><a href="#">База специалистов</a></li>
+                            <!-- <li><a href="#">База специалистов</a></li> -->
                             <li><a href="index.php#stack">Стек технологий</a></li>
                         </ul>
                     </li>
                     <li><a href="#">Кандидатам &dtrif;</a>
                         <ul class="dropdown">
-                            <li><a href="#">Обучение</a></li>
+                            <li><a href="vacancy.php">Вакансии</a></li>
+                            <!-- <li><a href="#">Обучение</a></li> -->
                         </ul>
                     </li>
                     <li><a href="index.php#about-company">Компания</a></li>
@@ -93,73 +94,56 @@
                 <div class="container-faq">
                     <h1 class="title">Вакансии</h1>
                     <div class="accordion">
-                        <div class="accordion-item">
-                            <button style="font-size: 2rem;" id="accordion-button-1" aria-expanded="false"><span
-                                    class="accordion-title">Frontend разработчик, Москва
-                                </span><span class="icon" aria-hidden="true"></span></button>
-                            <div class="accordion-content">
-                                <p style="font-size: 18px;">Что мы тебе предлагаем?</p>
-                                <ul class="list-style-one mdl-tabs__panel-text">
-                                    <li>Интересные и инновационные проекты: У нас ты будешь работать над современными и захватывающими проектами, использующими передовые технологии.</li>
-                                    <li>Профессиональный рост: Мы поддерживаем постоянное развитие и предлагаем возможности для обучения, курсы и участие в конференциях.</li>
-                                    <li>Гибкий график: Возможность удаленной работы и гибкий рабочий график, чтобы ты мог совмещать работу с личной жизнью.</li>
-                                    <li>Комфортный офис: Современные офисы в центре города с уютной атмосферой и всеми необходимыми удобствами.</li>
-                                    <li>Социальный пакет: Медицинская страховка, оплачиваемые отпуска и больничные, корпоративные мероприятия и другие бонусы.</li>
-                                </ul>
-                                <p style="font-size: 18px;">Требования:</p>
-                                <ul class="list-style-one mdl-tabs__panel-text">
-                                    <li>Опыт работы с HTML, CSS и JavaScript (ES6+).</li>
-                                    <li>Знание фреймворков, таких как React, Angular или Vue.js.</li>
-                                    <li>Опыт работы с системами контроля версий (Git).</li>
-                                    <li>Понимание принципов адаптивного дизайна и кроссбраузерной совместимости.</li>
-                                    <li>Умение работать с RESTful API.</li>
-                                    <li>Навыки тестирования кода (Jest, Mocha, Cypress и т.д.).</li>
-                                    <li>Желательно знание инструментов сборки (Webpack, Gulp, Parcel).</li>
-                                </ul>
-                                <p style="font-size: 18px;">Условия:</p>
-                                <ul class="list-style-one mdl-tabs__panel-text">
-                                    <li>График работы: Полная занятость, гибкий график с возможностью удаленной работы.</li>
-                                    <li>Местоположение: Москва.</li>
-                                    <li>Оформление: Официальное трудоустройство по ТК РФ.</li>
-                                    <li>Отпуск: Оплачиваемый ежегодный отпуск 28 календарных дней.</li>
-                                    <li>Дополнительные бонусы: Медицинская страховка, корпоративные мероприятия, курсы повышения квалификации и многое другое.</li>
-                                </ul>
-                                <p></p>
-                            </div>
-                        </div>
-                        <div class="accordion-item">
-                            <button style="font-size: 2rem;" id="accordion-button-2" aria-expanded="false"><span
-                                    class="accordion-title">QA-инженер (Тестировщик), Новосибирск
-                                </span><span class="icon" aria-hidden="true"></span></button>
-                            <div class="accordion-content">
-                                <p style="font-size: 18px;">Что мы тебе предлагаем?</p>
-                                <ul class="list-style-one mdl-tabs__panel-text">
-                                    <li>Интересные и инновационные проекты: У нас ты будешь работать над современными и захватывающими проектами, использующими передовые технологии.</li>
-                                    <li>Профессиональный рост: Мы поддерживаем постоянное развитие и предлагаем возможности для обучения, курсы и участие в конференциях.</li>
-                                    <li>Гибкий график: Возможность удаленной работы и гибкий рабочий график, чтобы ты мог совмещать работу с личной жизнью.</li>
-                                    <li>Комфортный офис: Современные офисы в центре города с уютной атмосферой и всеми необходимыми удобствами.</li>
-                                    <li>Социальный пакет: Медицинская страховка, оплачиваемые отпуска и больничные, корпоративные мероприятия и другие бонусы.</li>
-                                </ul>
-                                <p style="font-size: 18px;">Требования:</p>
-                                <ul class="list-style-one mdl-tabs__panel-text">
-                                    <li>Опыт работы в качестве QA-инженера от 2 лет.</li>
-                                    <li>Знание основ тестирования ПО и различных видов тестирования (функциональное, регрессионное, нагрузочное и т.д.).</li>
-                                    <li>Понимание жизненного цикла разработки ПО и роли тестирования на каждом этапе.</li>
-                                    <li>Навыки написания тест-кейсов, создания тестовых планов и отчетов о тестировании.</li>
-                                    <li>Знание SQL и умение работать с базами данных.</li>
-                                    <li>Желательно знание скриптовых языков (Python, JavaScript) для автоматизации тестирования.</li>
-                                </ul>
-                                <p style="font-size: 18px;">Условия:</p>
-                                <ul class="list-style-one mdl-tabs__panel-text">
-                                    <li>График работы: Полная занятость, гибкий график с возможностью удаленной работы.</li>
-                                    <li>Местоположение: Новосибирск.</li>
-                                    <li>Оформление: Официальное трудоустройство по ТК РФ.</li>
-                                    <li>Отпуск: Оплачиваемый ежегодный отпуск 28 календарных дней.</li>
-                                    <li>Дополнительные бонусы: Медицинская страховка, корпоративные мероприятия, курсы повышения квалификации и многое другое.</li>
-                                </ul>
-                                <p></p>
-                            </div>
-                        </div>
+                        <?php
+                        require_once 'back/connect.php';
+
+                        // Определяем функцию вне цикла
+                        if (!function_exists('formatToListItems')) {
+                            function formatToListItems($text) {
+                                $items = explode("\n", $text);
+                                $listItems = "";
+                                foreach ($items as $item) {
+                                    $listItems .= "<li>" . htmlspecialchars($item) . "</li>";
+                                }
+                                return $listItems;
+                            }
+                        }
+
+                        $query = "SELECT * FROM Vacancies";
+                        $result = mysqli_query($connect, $query);
+
+                        if ($result) {
+                            $counter = 1;
+                            while ($row = mysqli_fetch_assoc($result)) {
+                                $title = htmlspecialchars($row['title']);
+                                $location = htmlspecialchars($row['location']);
+                                
+                                $offer = formatToListItems($row['offer']);
+                                $requirements = formatToListItems($row['requirements']);
+                                $conditions = formatToListItems($row['conditions']);
+                                
+                                echo "
+                                <div class='accordion-item'>
+                                    <button style='font-size: 2rem;' id='accordion-button-$counter' aria-expanded='false'>
+                                        <span class='accordion-title'>$title</span><span class='icon' aria-hidden='true'></span>
+                                    </button>
+                                    <div class='accordion-content'>
+                                        <p style='font-size: 18px;'>Что мы тебе предлагаем?</p>
+                                        <ul class='list-style-one mdl-tabs__panel-text'>$offer</ul>
+                                        <p style='font-size: 18px;'>Требования:</p>
+                                        <ul class='list-style-one mdl-tabs__panel-text'>$requirements</ul>
+                                        <p style='font-size: 18px;'>Условия:</p>
+                                        <ul class='list-style-one mdl-tabs__panel-text'>$conditions</ul>
+                                    </div>
+                                </div>";
+                                $counter++;
+                            }
+                        } else {
+                            echo "<p>Ошибка загрузки вакансий: " . mysqli_error($connect) . "</p>";
+                        }
+
+                        mysqli_close($connect);
+                        ?>
                     </div>
                 </div>
             </div>
@@ -217,17 +201,17 @@
             <div class="footer-links">
                 <div>
                     <a href="index.php#specialization">Специализации</a>
-                    <a href="#">База специалистов</a>
+                    <a href="index.php#form-cons">Консультация</a>
                     <a href="index.php#stack">Стек технологий</a>
                 </div>
                 <div>
                     <a href="vacancy.php">Вакансии</a>
-                    <a href="#">Обучение</a>
+                    <!-- <a href="#">Обучение</a> -->
                     <a href="index.php#about-company">Компания</a>
                 </div>
-                <div>
+                <!-- <div>
                     <a href="index.php#form-cons">Консультация</a>
-                </div>
+                </div> -->
             </div>
             <a class="footer-up" href="#header">Наверх <span>↑</span></a>
         </div>
