@@ -64,12 +64,11 @@
                             <li><a href="index.php#stack">Стек технологий</a></li>
                         </ul>
                     </li>
-                    <li><a href="#">Кандидатам &dtrif;</a>
+                    <!-- <li><a href="#">Кандидатам &dtrif;</a>
                         <ul class="dropdown">
-                            <li><a href="vacancy.php">Вакансии</a></li>
-                            <!-- <li><a href="#">Обучение</a></li> -->
+                            <li><a href="#">Обучение</a></li>
                         </ul>
-                    </li>
+                    </li> -->
                     <li><a href="index.php#about-company">Компания</a></li>
                     <li style="border-right: 2px solid #3ca0e7;"><a href="index.php#form-cons">Консультация</a></li>
                 </ul>
@@ -150,7 +149,7 @@
             <div class="vacancy-form">
                 <section class="formCons-in-touch">
                     <h1 class="title">Откликнуться</h1>
-                    <form class="contact-form row" action="back/crud/createContact.php" method="POST">
+                    <form class="contact-form row" action="back/crud/createContact.php" method="POST" enctype="multipart/form-data">
                         <div class="form-field col x-100">
                             <input id="email" name="email" class="input-text js-input" type="email" required>
                             <label class="label" for="email">E-mail</label>
@@ -179,6 +178,10 @@
                             <input id="reason" name="reason" class="input-text js-input" type="text" required>
                             <label class="label" for="reason">Почему вы хотите работать у нас</label>
                         </div>
+                        <div class="form-field col x-100">
+                            <input id="photo" name="photo" class="input-file js-input" type="file" accept="image/*" required>
+                            <label style="line-height: 50px;" class="label" for="photo">Загрузите вашу фотографию</label>
+                        </div>
                         <div class="form-field col x-100 align-center">
                             <input class="submit-btn" type="submit" value="Отправить">
                         </div>
@@ -201,7 +204,7 @@
             <div class="footer-links">
                 <div>
                     <a href="index.php#specialization">Специализации</a>
-                    <a href="index.php#form-cons">Консультация</a>
+                    <!-- <a href="#">База специалистов</a> -->
                     <a href="index.php#stack">Стек технологий</a>
                 </div>
                 <div>
@@ -209,9 +212,9 @@
                     <!-- <a href="#">Обучение</a> -->
                     <a href="index.php#about-company">Компания</a>
                 </div>
-                <!-- <div>
+                <div>
                     <a href="index.php#form-cons">Консультация</a>
-                </div> -->
+                </div>
             </div>
             <a class="footer-up" href="#header">Наверх <span>↑</span></a>
         </div>

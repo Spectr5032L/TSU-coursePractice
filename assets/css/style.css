@@ -914,3 +914,28 @@ section.t-bq-section {
         line-height: 48px;
     }
 }
+
+
+
+
+
+
+
+/* DB-SPEC */
+
+/* карточки */
+
+.specialization-cards ul {
+    margin: 0;
+    /* padding: 0; */
+    list-style: none;
+}
+
+.specialization-cards span {
+    color: rgb(152, 152, 152);
+    font-size: 24px;
+}
+
+.specialization-cards p {
+    font-size: 18px;
+}
