@@ -1,10 +1,14 @@
+<?php 
+    require_once 'back/connect.php';
+?>
+
 <!DOCTYPE html>
 <html lang="ru">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HUBIT • Вакансии</title>
+    <title>HUBIT • База специалистов</title>
 
     <link rel="apple-touch-icon" sizes="180x180" href="assets/favicon_io/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon_io/favicon-32x32.png">
@@ -36,15 +40,9 @@
                     <li><a href="#">Компаниям &dtrif;</a>
                         <ul class="dropdown">
                             <li><a href="index.php#specialization">Специализации</a></li>
-                            <!-- <li><a href="#">База специалистов</a></li> -->
                             <li><a href="index.php#stack">Стек технологий</a></li>
                         </ul>
                     </li>
-                    <!-- <li><a href="#">Кандидатам &dtrif;</a>
-                        <ul class="dropdown">
-                            <li><a href="#">Обучение</a></li>
-                        </ul>
-                    </li> -->
                     <li><a href="index.php#about-company">Компания</a></li>
                     <li style="border-right: 2px solid #3ca0e7;"><a href="index.php#form-cons">Консультация</a></li>
                 </ul>
@@ -56,33 +54,61 @@
         <div class="main-container">
             <div class="specialization-description">
                 <div class="vacancy-description">
-                    <h1 class="title">Добро пожаловать</h1>
-                    <div>
-                        Если ты увлечен технологиями, стремишься к совершенству и готов работать над интересными
-                        задачами,
-                        мы будем рады видеть тебя в нашей команде. Твоя карьера в IT заслуживает лучшего – и HUBIT
-                        готова это предоставить!
+                    <h1 class="title">Витрина кандидатов</h1>
+                    <div style="line-height: 25px;">
+                        Добро пожаловать на витрину кандидатов нашего сайта! Здесь вы найдете информацию о выдающихся профессионалах, 
+                        готовых присоединиться к вашей команде. Мы тщательно отбираем кандидатов, чтобы предложить вам самых квалифицированных и 
+                        опытных специалистов в своей области.
                     </div>
                 </div>
             </div>
             <div class="specialization-cards">
-                <div class="specialization-item">
-                    <div class="item-description">
-                        <h2>Прошков Александр</h2>
-                        <div>
-                            <span>QA-инженер (Тестировщик)</span>
-                            <p>Навыки:</p>
-                            <ul class="list-style-one mdl-tabs__panel-text">
-                                <li>Коммуникабельность</li>
-                                <li>Аналитическое мышление</li>
-                                <li>Trello</li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="item-img">
-                        <img src="assets/img/1.jpg" alt=""> <!-- подгружается с БД -->
-                    </div>
-                </div>
+                <?php
+                // Выполняем запрос к базе данных для получения кандидатов со статусом "job"
+                $query = "SELECT nameSername, skills, position, photo_path FROM ContactForm WHERE status = 'job'";
+                $result = mysqli_query($connect, $query);
+
+                if ($result) {
+                    while ($row = mysqli_fetch_assoc($result)) {
+                        $nameSername = htmlspecialchars($row['nameSername']);
+                        $skillsJson = $row['skills'];
+                        $position = htmlspecialchars($row['position']);
+                        $photo_path = htmlspecialchars($row['photo_path']);
+
+                        // Декодируем JSON строку с навыками
+                        $skillsArray = json_decode($skillsJson, true);
+                        $skillsList = '';
+                        if (is_array($skillsArray)) {
+                            foreach ($skillsArray as $skill) {
+                                $skillsList .= "<li>" . htmlspecialchars($skill) . "</li>";
+                            }
+                        }
+
+                        // Создаем HTML-блок для каждого кандидата
+                        echo "
+                        <div class='specialization-item'>
+                            <div class='item-description'>
+                                <h2 style='width: 400px;'>$nameSername</h2>
+                                <div>
+                                    <span>$position</span>
+                                    <p>Навыки:</p>
+                                    <ul class='list-style-one mdl-tabs__panel-text'>
+                                        $skillsList
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class='item-img'>
+                                <img src='$photo_path' alt='Фото $nameSername'>
+                            </div>
+                        </div>";
+                    }
+                } else {
+                    echo "<p>Ошибка загрузки данных: " . mysqli_error($connect) . "</p>";
+                }
+
+                // Закрываем соединение с базой данных
+                mysqli_close($connect);
+                ?>
             </div>
         </div>
     </main>
@@ -100,12 +126,10 @@
             <div class="footer-links">
                 <div>
                     <a href="index.php#specialization">Специализации</a>
-                    <!-- <a href="#">База специалистов</a> -->
                     <a href="index.php#stack">Стек технологий</a>
                 </div>
                 <div>
                     <a href="vacancy.php">Вакансии</a>
-                    <!-- <a href="#">Обучение</a> -->
                     <a href="index.php#about-company">Компания</a>
                 </div>
                 <div>

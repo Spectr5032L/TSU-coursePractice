@@ -6,26 +6,46 @@
     $phone = $_POST['phone'];
     $company = $_POST['company'];
     $message = $_POST['message'];
+    $skills = $_POST['skills'];
 
+    // Валидация номера телефона
     if (!preg_match('/^\+?[0-9\s\-\(\)]{7,20}$/', $phone)) {
         header('Location: ../../index.php?status=invalid_phone');
         exit();
     }
 
-    // Экранирование спецсимволов
+    // Проверка и подсчет длины навыков
+    $total_skills_length = 0;
+    foreach ($skills as $skill) {
+        $total_skills_length += strlen($skill);
+        if (strlen($skill) > 200) {
+            header('Location: ../../index.php?status=skills_too_long');
+            exit();
+        }
+    }
+    if ($total_skills_length > 400) {
+        header('Location: ../../index.php?status=skills_too_long');
+        exit();
+    }
+
+    // Экранирование спецсимволов для остальных данных
     $email = mysqli_real_escape_string($connect, $email);
     $name = mysqli_real_escape_string($connect, $name);
     $phone = mysqli_real_escape_string($connect, $phone);
     $company = mysqli_real_escape_string($connect, $company);
     $message = mysqli_real_escape_string($connect, $message);
 
+    // Преобразование массива навыков в JSON без экранирования
+    $skills_json = json_encode($skills, JSON_UNESCAPED_UNICODE);
+
+    // Проверка на дубликаты
     $check_query = "SELECT * FROM `CommunicationForm` WHERE nameSername='$name' AND phone='$phone' AND email='$email' AND nameCompany='$company' AND nameSpecialist='$message'";
     $result = mysqli_query($connect, $check_query);
 
     if (mysqli_num_rows($result) > 0) {
         header('Location: ../../index.php?status=duplicate');
     } else {
-        $query = "INSERT INTO `CommunicationForm` (nameSername, phone, email, nameCompany, nameSpecialist) VALUES ('$name', '$phone', '$email', '$company', '$message')";
+        $query = "INSERT INTO `CommunicationForm` (nameSername, phone, email, nameCompany, nameSpecialist, skills) VALUES ('$name', '$phone', '$email', '$company', '$message', '$skills_json')";
         
         if (mysqli_query($connect, $query)) {
             header('Location: ../../index.php?status=success');

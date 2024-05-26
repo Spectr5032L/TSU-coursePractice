@@ -112,7 +112,7 @@
     list-style: none;
 }
 
-img {
+.main-about img {
     max-width: 100%;
     height: auto;
 }
@@ -915,6 +915,24 @@ section.t-bq-section {
     }
 }
 
+/* ФОРМА */
+
+.add-skill-btn {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 10px 20px;
+    background-color: #3CA0E7;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.add-skill-btn:hover {
+    background-color: #2b80b4;
+}
+
+
 
 
 
@@ -938,4 +956,20 @@ section.t-bq-section {
 
 .specialization-cards p {
     font-size: 18px;
+}
+
+.specialization-item {
+    display: flex;
+    flex-direction: row;
+    /* justify-content: space-around; */
+    margin-bottom: 4vh;
+    background-color: rgb(169, 152, 152, 0.2);
+    border-radius: 30px;
+    padding: 40px;
+    align-items: center;
+}
+
+.specialization-item img{
+    width: 230px;
+    margin-left: 9vw;
 }

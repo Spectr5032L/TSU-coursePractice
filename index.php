@@ -21,6 +21,29 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
     <script>
+        $(document).ready(function () {
+            $('#add-skill').click(function (e) {
+                e.preventDefault();
+                $('#skills-container').append(
+                    '<div class="form-field col x-100 skill-entry">' +
+                    '<input name="skills[]" class="input-text js-input" type="text" required>' +
+                    '<label style="bottom: 30px;" class="label">Навык специалиста</label>' +
+                    '<button style="text-transform: none; font-size: 12px; padding: 2.5px 5px;"  class="remove-skill-btn submit-btn" onclick="removeSkill(this)">Удалить</button>' +
+                    '</div>'
+                );
+            });
+        });
+
+        function removeSkill(button) {
+            var skillEntries = $('#skills-container .skill-entry');
+            if (skillEntries.length > 1) {
+                $(button).parent().remove();
+            } else {
+                alert('Нельзя удалить последний навык.');
+            }
+        }
+
+
         function showAlert(status) {
             if (status === 'duplicate') {
                 alert('Запись с такими данными уже существует!');
@@ -54,7 +77,7 @@
                     <li><a href="#">Компаниям &dtrif;</a>
                         <ul class="dropdown">
                             <li><a href="#specialization">Специализации</a></li>
-                            <!-- <li><a href="#">База специалистов</a></li> -->
+                            <li><a href="db-spec.php">База специалистов</a></li>
                             <li><a href="#stack">Стек технологий</a></li>
                         </ul>
                     </li>
@@ -562,6 +585,14 @@
                             <input id="message" name="message" class="input-text js-input" type="text" required>
                             <label class="label" for="message">Какой специалист требуется</label>
                         </div>
+                        <div id="skills-container">
+                            <div class="form-field col x-100 skill-entry">
+                                <input name="skills[]" class="input-text js-input" type="text" required>
+                                <label style="bottom: 30px;" class="label">Какие навыки должны быть у специалиста</label>
+                                <button style="text-transform: none; font-size: 12px; padding: 2.5px 5px;" class="remove-skill-btn submit-btn" onclick="removeSkill(this)">Удалить</button>
+                            </div>
+                        </div>
+                        <button style="text-transform: none; font-size: 12px; padding: 5px 10px;" id="add-skill" class="add-skill-btn submit-btn">Добавить навык</button>
                         <div class="form-field col x-100 align-center">
                             <input class="submit-btn" type="submit" value="Отправить">
                         </div>
@@ -584,7 +615,7 @@
             <div class="footer-links">
                 <div>
                     <a href="#specialization">Специализации</a>
-                    <!-- <a href="#">База специалистов</a> -->
+                    <a href="db-spec.php">База специалистов</a>
                     <a href="#stack">Стек технологий</a>
                 </div>
                 <div>
