@@ -6,6 +6,7 @@
     $phone = $_POST['phone'];
     $position = $_POST['position'];
     $city = $_POST['city'];
+    $salary = $_POST['salary'];
     $skills = $_POST['skills'];
     $reason = $_POST['reason'];
 
@@ -43,6 +44,7 @@
     $phone = mysqli_real_escape_string($connect, $phone);
     $position = mysqli_real_escape_string($connect, $position);
     $city = mysqli_real_escape_string($connect, $city);
+    $salary = mysqli_real_escape_string($connect, $salary);
     // $skills = mysqli_real_escape_string($connect, $skills);
     $reason = mysqli_real_escape_string($connect, $reason);
 
@@ -71,7 +73,7 @@
                     header('Location: ../../vacancy.php?status=duplicate');
                 } else {
                     // Вставка данных
-                    $query = "INSERT INTO `ContactForm` (nameSername, phone, email, skills, cityFor, reason, position, photo_path, status) VALUES ('$name', '$phone', '$email', '$skills_json', '$city', '$reason', '$position', '$photoPath', 'vac')";
+                    $query = "INSERT INTO `ContactForm` (nameSername, phone, email, skills, cityFor, reason, position, salary, photo_path, status) VALUES ('$name', '$phone', '$email', '$skills_json', '$city', '$reason', '$position', '$salary', '$photoPath', 'vac')";
                     
                     if (mysqli_query($connect, $query)) {
                         header('Location: ../../vacancy.php?status=success');

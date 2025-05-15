@@ -191,13 +191,17 @@
                             <input id="phone" name="phone" class="input-text js-input" type="text" required>
                             <label class="label" for="phone">Телефон</label>
                         </div>
-                        <div class="form-field col x-50">
+                        <div class="form-field col x-100">
                             <input id="position" name="position" class="input-text js-input" type="text" required>
                             <label class="label" for="position">Должность</label>
                         </div>
                         <div class="form-field col x-50">
                             <input id="city" name="city" class="input-text js-input" type="text" required>
                             <label class="label" for="city">Город трудоустройства</label>
+                        </div>
+                        <div class="form-field col x-50">
+                            <input id="salary" name="salary" class="input-text js-input" type="text" required>
+                            <label class="label" for="salary">Введите желаемую зарплату</label>
                         </div>
                         <div id="skills-container">
                             <div class="form-field col x-100 skill-entry">
@@ -206,7 +210,9 @@
                                 <button style="text-transform: none; font-size: 12px; padding: 2.5px 5px;" class="remove-skill-btn submit-btn" onclick="removeSkill(this)">Удалить</button>
                             </div>
                         </div>
-                        <button style="text-transform: none; font-size: 12px; padding: 5px 10px;" id="add-skill" class="add-skill-btn submit-btn">Добавить навык</button>
+                        <div>
+                            <button style="text-transform: none; font-size: 12px; padding: 5px 10px;" id="add-skill" class="add-skill-btn submit-btn">Добавить навык</button>
+                        </div>
                         <div class="form-field col x-100">
                             <input id="reason" name="reason" class="input-text js-input" type="text" required>
                             <label class="label" for="reason">Почему вы хотите работать у нас</label>

@@ -951,7 +951,7 @@ section.t-bq-section {
 
 .specialization-cards span {
     color: rgb(152, 152, 152);
-    font-size: 24px;
+    font-size: 18px;
 }
 
 .specialization-cards p {
@@ -960,9 +960,12 @@ section.t-bq-section {
 
 .specialization-item {
     display: flex;
+    width: 380px;
+    height: 180px;
     flex-direction: row;
     /* justify-content: space-around; */
     margin-bottom: 4vh;
+    margin-left: 9vw;
     background-color: rgb(169, 152, 152, 0.2);
     border-radius: 30px;
     padding: 40px;
@@ -970,6 +973,13 @@ section.t-bq-section {
 }
 
 .specialization-item img{
-    width: 230px;
-    margin-left: 9vw;
+    width: 120px;
+    height: 170px;
+    
+}
+
+.specialization-item h2{
+    font-size: 22px;
+    margin: 0px;
+    padding: 0px;
 }

@@ -65,7 +65,7 @@
             <div class="specialization-cards">
                 <?php
                 // Выполняем запрос к базе данных для получения кандидатов со статусом "job"
-                $query = "SELECT nameSername, skills, position, photo_path FROM ContactForm WHERE status = 'job'";
+                $query = "SELECT nameSername, skills, position, salary, photo_path FROM ContactForm WHERE status = 'job'";
                 $result = mysqli_query($connect, $query);
 
                 if ($result) {
@@ -73,6 +73,7 @@
                         $nameSername = htmlspecialchars($row['nameSername']);
                         $skillsJson = $row['skills'];
                         $position = htmlspecialchars($row['position']);
+                        $salary = htmlspecialchars($row['salary']);
                         $photo_path = htmlspecialchars($row['photo_path']);
 
                         // Декодируем JSON строку с навыками
@@ -87,18 +88,19 @@
                         // Создаем HTML-блок для каждого кандидата
                         echo "
                         <div class='specialization-item'>
+                            <div class='item-img'>
+                                <img src='$photo_path' alt='Фото $nameSername'>
+                            </div>
                             <div class='item-description'>
                                 <h2 style='width: 400px;'>$nameSername</h2>
                                 <div>
-                                    <span>$position</span>
+                                    <span>$position</span> <br>
+                                    <span>$salary</span>
                                     <p>Навыки:</p>
                                     <ul class='list-style-one mdl-tabs__panel-text'>
                                         $skillsList
                                     </ul>
                                 </div>
-                            </div>
-                            <div class='item-img'>
-                                <img src='$photo_path' alt='Фото $nameSername'>
                             </div>
                         </div>";
                     }
