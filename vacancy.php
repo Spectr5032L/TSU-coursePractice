@@ -213,7 +213,7 @@
                         </div>
                         <div class="form-field col x-100">
                             <input id="photo" name="photo" class="input-file js-input" type="file" accept="image/*" required>
-                            <label style="line-height: 50px;" class="label" for="photo">Загрузите вашу фотографию (230x230)</label>
+                            <label style="line-height: 50px;" class="label" for="photo">Загрузите вашу фотографию (120x170)</label>
                         </div>
 
                         <div class="form-field col x-100 align-center">

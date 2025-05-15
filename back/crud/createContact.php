@@ -58,7 +58,7 @@
             $photo = $_FILES['photo'];
             list($width, $height) = getimagesize($photo['tmp_name']);
     
-            if ($width == 230) {
+            if ($width == 120 and $height == 170) {
                 $photoPath = 'assets/img/avatar/candidates/' . uniqid() . '.' . $fileExt;
                 move_uploaded_file($photo['tmp_name'], '../../' . $photoPath);
     
