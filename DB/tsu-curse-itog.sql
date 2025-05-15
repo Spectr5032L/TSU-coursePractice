@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: 127.0.0.1:3306
--- Время создания: Май 15 2025 г., 18:00
+-- Время создания: Май 15 2025 г., 18:27
 -- Версия сервера: 8.0.30
 -- Версия PHP: 8.1.9
 
@@ -65,6 +65,7 @@ CREATE TABLE `ContactForm` (
   `cityFor` char(30) NOT NULL,
   `reason` varchar(400) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
   `position` char(30) NOT NULL,
+  `salary` float NOT NULL,
   `photo_path` varchar(64) NOT NULL,
   `status` varchar(3) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='Форма с страницы вакансий';
@@ -73,12 +74,12 @@ CREATE TABLE `ContactForm` (
 -- Дамп данных таблицы `ContactForm`
 --
 
-INSERT INTO `ContactForm` (`id`, `nameSername`, `phone`, `email`, `skills`, `cityFor`, `reason`, `position`, `photo_path`, `status`) VALUES
-(1, 'Boris Britva', '83143243424', 'test@mail.ru', 'Я могу в фронт', 'Москва', 'Нужны деньги(', 'Frontend', 'assets/img/avatar/candidates/682600d98338c.jpg', 'job'),
-(2, 'Boris Britva', '83143243424', 'test@mail.ru', 'Я могу в фрон', 'Москва', 'Нужны деньги(', 'Frontend', 'assets/img/avatar/candidates/682600d98338c.jpg', 'vac'),
-(3, 'Boris Britva', '83143243424', 'test@mail.ru', 'Я могу в фронs', 'Москва', 'Нужны деньги(', 'Frontend', 'assets/img/avatar/candidates/682600d98338c.jpg', 'job'),
-(4, 'Boris Britva', '83143243424', 'test@mail.ru', 'dsfsdfs', 'Москва', 'sdfsdfsdasdas', 'Frontend', 'assets/img/avatar/candidates/682600d98338c.jpg', 'job'),
-(5, 'Гость', '+7 (904) 470-35-99', 'mihail.plotnikov.08@mail.ru', '[\"sdf\"]', 'ds', 'hgggdf', 'sdfs', 'assets/img/avatar/candidates/682600d98338c.jpg', 'vac');
+INSERT INTO `ContactForm` (`id`, `nameSername`, `phone`, `email`, `skills`, `cityFor`, `reason`, `position`, `salary`, `photo_path`, `status`) VALUES
+(1, 'Boris Britva', '83143243424', 'test@mail.ru', 'Я могу в фронт', 'Москва', 'Нужны деньги(', 'Frontend', 0, 'assets/img/avatar/candidates/682600d98338c.jpg', 'job'),
+(2, 'Boris Britva', '83143243424', 'test@mail.ru', 'Я могу в фрон', 'Москва', 'Нужны деньги(', 'Frontend', 0, 'assets/img/avatar/candidates/682600d98338c.jpg', 'vac'),
+(3, 'Boris Britva', '83143243424', 'test@mail.ru', 'Я могу в фронs', 'Москва', 'Нужны деньги(', 'Frontend', 0, 'assets/img/avatar/candidates/682600d98338c.jpg', 'job'),
+(4, 'Boris Britva', '83143243424', 'test@mail.ru', 'dsfsdfs', 'Москва', 'sdfsdfsdasdas', 'Frontend', 0, 'assets/img/avatar/candidates/682600d98338c.jpg', 'job'),
+(5, 'Гость', '+7 (904) 470-35-99', 'mihail.plotnikov.08@mail.ru', '[\"sdf\"]', 'ds', 'hgggdf', 'sdfs', 0, 'assets/img/avatar/candidates/682600d98338c.jpg', 'job');
 
 -- --------------------------------------------------------
 
