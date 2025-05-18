@@ -37,10 +37,16 @@
             </div>
             <nav role="navigation" class="primary-navigation">
                 <ul>
-                    <li><a href="#">Компаниям &dtrif;</a>
+                    <li><a href="index.php">Компаниям &dtrif;</a>
                         <ul class="dropdown">
                             <li><a href="index.php#specialization">Специализации</a></li>
                             <li><a href="index.php#stack">Стек технологий</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#">Кандидатам &dtrif;</a>
+                        <ul class="dropdown">
+                            <li><a href="vacancy.php">Вакансии</a></li>
+                            <!-- <li><a href="#">Обучение</a></li> -->
                         </ul>
                     </li>
                     <li><a href="index.php#about-company">Компания</a></li>
@@ -62,6 +68,28 @@
                     </div>
                 </div>
             </div>
+
+            <div class="formCons-in-touch specialization">
+                <div class="contact-form col">
+                    <div class="form-field col x-100 align-center">
+                            <input class="filter-btn" type="submit" value="Фильтр по витрине">
+                    </div>
+
+                    <div class="form-field col x-100">
+                        <input id="city" name="city" class="input-text js-input" type="text" required>
+                        <label class="label" for="city">Навыки работника</label>
+                    </div>
+                    <div class="form-field col x-100">
+                        <input id="salary" name="salary" class="input-text js-input" type="text" required>
+                        <label class="label" for="salary">Категория работника</label>
+                    </div>
+                    <div class="form-field col x-100">
+                        <input id="salary" name="salary" class="input-text js-input" type="text" required>
+                        <label class="label" for="salary">Лет опыта</label>
+                    </div>
+                </div>
+            </div>
+
             <div class="specialization-cards">
                 <?php
                 // Выполняем запрос к базе данных для получения кандидатов со статусом "job"
@@ -86,17 +114,19 @@
                         }
 
                         // Создаем HTML-блок для каждого кандидата
+                        // <p>Навыки:</p>
                         echo "
                         <div class='specialization-item'>
                             <div class='item-img'>
                                 <img src='$photo_path' alt='Фото $nameSername'>
                             </div>
                             <div class='item-description'>
-                                <h2 style='width: 400px;'>$nameSername</h2>
+                                <h2 style='width: 300px;'>$nameSername</h2>
                                 <div>
-                                    <span>$position</span> <br>
-                                    <span>$salary</span>
-                                    <p>Навыки:</p>
+                                    <div class='item-info'>
+                                        <span>$position</span>
+                                        <span>" . number_format($salary, 0, '', ' ') . " (руб/мес)</span>
+                                    </div>
                                     <ul class='list-style-one mdl-tabs__panel-text'>
                                         $skillsList
                                     </ul>
