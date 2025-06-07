@@ -1,5 +1,5 @@
-<?php 
-    require_once 'back/connect.php';
+<?php
+require_once 'back/connect.php';
 ?>
 
 <!DOCTYPE html>
@@ -62,35 +62,34 @@
                 <div class="vacancy-description">
                     <h1 class="title">Витрина кандидатов</h1>
                     <div style="line-height: 25px;">
-                        Добро пожаловать на витрину кандидатов нашего сайта! Здесь вы найдете информацию о выдающихся профессионалах, 
-                        готовых присоединиться к вашей команде. Мы тщательно отбираем кандидатов, чтобы предложить вам самых квалифицированных и 
+                        Добро пожаловать на витрину кандидатов нашего сайта! Здесь вы найдете информацию о выдающихся профессионалах,
+                        готовых присоединиться к вашей команде. Мы тщательно отбираем кандидатов, чтобы предложить вам самых квалифицированных и
                         опытных специалистов в своей области.
                     </div>
                 </div>
             </div>
 
-            <div class="formCons-in-touch specialization">
+            <form id="filter-form" class="formCons-in-touch specialization">
                 <div class="contact-form col">
+                    <div class="form-field col x-100">
+                        <input id="skills" name="skills" class="input-text js-input" type="text">
+                        <label class="label" for="skills">Навыки работника</label>
+                    </div>
+                    <div class="form-field col x-100">
+                        <input id="position" name="position" class="input-text js-input" type="text">
+                        <label class="label" for="position">Категория работника</label>
+                    </div>
+                    <div class="form-field col x-100">
+                        <input id="experience" name="experience" class="input-text js-input" type="number">
+                        <label class="label" for="experience">Лет опыта</label>
+                    </div>
                     <div class="form-field col x-100 align-center">
-                            <input class="filter-btn" type="submit" value="Фильтр по витрине">
-                    </div>
-
-                    <div class="form-field col x-100">
-                        <input id="city" name="city" class="input-text js-input" type="text" required>
-                        <label class="label" for="city">Навыки работника</label>
-                    </div>
-                    <div class="form-field col x-100">
-                        <input id="salary" name="salary" class="input-text js-input" type="text" required>
-                        <label class="label" for="salary">Категория работника</label>
-                    </div>
-                    <div class="form-field col x-100">
-                        <input id="salary" name="salary" class="input-text js-input" type="text" required>
-                        <label class="label" for="salary">Лет опыта</label>
+                        <button type="submit" class="filter-btn">Фильтровать</button>
                     </div>
                 </div>
-            </div>
+            </form>
 
-            <div class="specialization-cards">
+            <div class="specialization-cards" id="results-container">
                 <?php
                 // Выполняем запрос к базе данных для получения кандидатов со статусом "job"
                 $query = "SELECT nameSername, skills, position, salary, photo_path FROM ContactForm WHERE status = 'job'";
@@ -138,7 +137,6 @@
                     echo "<p>Ошибка загрузки данных: " . mysqli_error($connect) . "</p>";
                 }
 
-                // Закрываем соединение с базой данных
                 mysqli_close($connect);
                 ?>
             </div>
@@ -173,5 +171,46 @@
     </footer>
 
 </body>
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    const form = document.getElementById('filter-form');
+    const resultsContainer = document.getElementById('results-container');
+
+    function sendFilter() {
+        const formData = new FormData(form);
+
+        let empty = true;
+        for (let [key, value] of formData.entries()) {
+            if (value.trim() !== '') {
+                empty = false;
+                break;
+            }
+        }
+
+        fetch('back/filters.php', {
+            method: 'POST',
+            body: empty ? null : formData
+        })
+        .then(response => response.text())
+        .then(html => {
+            resultsContainer.innerHTML = html;
+        })
+        .catch(error => {
+            console.error('Ошибка при фильтрации:', error);
+        });
+    }
+
+    
+    form.querySelectorAll('input').forEach(input => {
+        input.addEventListener('input', () => {
+            sendFilter();
+        });
+    });
+
+    
+    sendFilter();
+});
+</script>
+
 
 </html>
