@@ -86,6 +86,7 @@
             </div>
             <nav role="navigation" class="primary-navigation">
                 <ul>
+                    <li><a href="redirect.php">Личный кабинет</a></li>
                     <li><a href="index.php">Компаниям &dtrif;</a>
                         <ul class="dropdown">
                             <li><a href="index.php#specialization">Специализации</a></li>
@@ -216,6 +217,21 @@
                         <div class="form-field col x-100">
                             <input id="reason" name="reason" class="input-text js-input" type="text" required>
                             <label class="label" for="reason">Почему вы хотите работать у нас</label>
+                        </div>
+                        <div class="form-field col x-100">
+                            <input id="exp" name="exp" class="input-text js-input" type="text" required>
+                            <label class="label" for="exp">Опыт работы (В годах)</label>
+                        </div>
+                        <div class="form-field col x-100">
+                            <input id="exp" name="edu" class="input-text js-input" type="text" required>
+                            <label class="label" for="edu">Ваши рабочие направления (Специальности)</label>
+                        </div>
+                         <div class="form-field col x-100">
+                            <label class="label" for="about">Информация о вас, опыте работы, образовании</label>
+                        </div>
+                        <div class="col x-100">
+                            <textarea rows="10" id="about" name="about" class="input-text js-input" type="text" required></textarea>
+                            
                         </div>
                         <div class="form-field col x-100">
                             <input id="photo" name="photo" class="input-file js-input" type="file" accept="image/*" required>

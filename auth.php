@@ -25,7 +25,7 @@ require_once  'back/user/helper.php';
             <form action="/back/user/login.php" method="post" enctype="multipart/form-data">
                 <div class="form-fields">
                     <div class="form-field">
-                        <input type="text" name="name" placeholder="Введите имя" value="<?php echo old('name')?>">
+                        <input type="text" name="email" placeholder="Введите адрес электронной почты" value="<?php echo old('name')?>">
                         <?php //if(hasValidationError('name')) {
                             //validationErrorMsg('name'); 
                         //}?>

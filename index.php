@@ -74,6 +74,7 @@
             </div>
             <nav role="navigation" class="primary-navigation">
                 <ul>
+                    <li><a href="redirect.php">Личный кабинет</a></li>
                     <li><a href="#">Компаниям &dtrif;</a>
                         <ul class="dropdown">
                             <li><a href="#specialization">Специализации</a></li>
@@ -88,7 +89,9 @@
                         </ul>
                     </li>
                     <li><a href="#about-company">Компания</a></li>
+                    
                     <li style="border-right: 2px solid #3ca0e7;"><a href="#form-cons">Консультация</a></li>
+                    
                 </ul>
             </nav>
         </div>
@@ -571,28 +574,18 @@
                         </div>
                         <div class="form-field col x-50">
                             <input id="name" name="name" class="input-text js-input" type="text" required>
-                            <label class="label" for="name">Ваше имя</label>
+                            <label class="label" for="name">Ваше ФИО</label>
                         </div>
                         <div class="form-field col x-50">
                             <input id="phone" name="phone" class="input-text js-input" type="text" required>
                             <label class="label" for="phone">Телефон</label>
                         </div>
-                        <div class="form-field col x-50">
+                        <div class="form-field col x-100">
                             <input id="company" name="company" class="input-text js-input" type="text" required>
                             <label class="label" for="company">Название вашей компании</label>
                         </div>
-                        <div class="form-field col x-50">
-                            <input id="message" name="message" class="input-text js-input" type="text" required>
-                            <label class="label" for="message">Какой специалист требуется</label>
-                        </div>
-                        <div id="skills-container">
-                            <div class="form-field col x-100 skill-entry">
-                                <input name="skills[]" class="input-text js-input" type="text" required>
-                                <label style="bottom: 30px;" class="label">Какие навыки должны быть у специалиста</label>
-                                <button style="text-transform: none; font-size: 12px; padding: 2.5px 5px;" class="remove-skill-btn submit-btn" onclick="removeSkill(this)">Удалить</button>
-                            </div>
-                        </div>
-                        <button style="text-transform: none; font-size: 12px; padding: 5px 10px;" id="add-skill" class="add-skill-btn submit-btn">Добавить навык</button>
+                       
+                        
                         <div class="form-field col x-100 align-center">
                             <input class="submit-btn" type="submit" value="Отправить">
                         </div>

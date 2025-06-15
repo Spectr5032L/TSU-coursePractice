@@ -1,5 +1,7 @@
-<?php 
-    require_once 'back/connect.php';
+<?php
+require_once 'back/connect.php';
+session_start();
+
 ?>
 
 <!DOCTYPE html>
@@ -37,6 +39,7 @@
             </div>
             <nav role="navigation" class="primary-navigation">
                 <ul>
+                    <li><a href="back/user/logout.php">Выход</a></li>
                     <li><a href="index.php">Компаниям &dtrif;</a>
                         <ul class="dropdown">
                             <li><a href="index.php#specialization">Специализации</a></li>
@@ -60,101 +63,161 @@
         <div class="main-container">
 
             <div class="applications-cards">
-                <h3>Открытые заявки</h3>
+                <h3>Открытые заявки || <a href="request.php" style="text-decoration: none;">&#10133;</a></h3>
                 <div class="applications-items">
-                    <div class="applications-item">
-                        <div class="applications-description">
-                            <h2 style="width: 300px;">Product Lead</h2>
-                            <div>
-                                <div class="item-info">
-                                    <span>Дата создания: 06.12.2024</span>
-                                </div>
-                                <ul class='list-style-one mdl-tabs__panel-text'>
-                                    <li>Adobe Photoshop</li>
-                                    <li>Angular</li>
-                                    <li>Bootstrap</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="applications-item">
-                        <div class="applications-description">
-                            <h2 style="width: 300px;">Product Lead</h2>
-                            <div>
-                                <div class="item-info">
-                                    <span>Дата создания: 06.12.2024</span>
-                                </div>
-                                <ul class='list-style-one mdl-tabs__panel-text'>
-                                    <li>Adobe Photoshop</li>
-                                    <li>Angular</li>
-                                    <li>Bootstrap</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="applications-item">
-                        <div class="applications-description">
-                            <h2 style="width: 300px;">Product Lead</h2>
-                            <div>
-                                <div class="item-info">
-                                    <span>Дата создания: 06.12.2024</span>
-                                </div>
-                                <ul class='list-style-one mdl-tabs__panel-text'>
-                                    <li>Adobe Photoshop</li>
-                                    <li>Angular</li>
-                                    <li>Bootstrap</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="applications-item">
-                        <div class="applications-description">
-                            <h2 style="width: 300px;">Product Lead</h2>
-                            <div>
-                                <div class="item-info">
-                                    <span>Дата создания: 06.12.2024</span>
-                                </div>
-                                <ul class='list-style-one mdl-tabs__panel-text'>
-                                    <li>Adobe Photoshop</li>
-                                    <li>Angular</li>
-                                    <li>Bootstrap</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="applications-item">
-                        <div class="applications-description">
-                            <h2 style="width: 300px;">Product Lead</h2>
-                            <div>
-                                <div class="item-info">
-                                    <span>Дата создания: 06.12.2024</span>
-                                </div>
-                                <ul class='list-style-one mdl-tabs__panel-text'>
-                                    <li>Adobe Photoshop</li>
-                                    <li>Angular</li>
-                                    <li>Bootstrap</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
 
-            <div class="selected-specialists">
-                <h3>Подобранные специалисты</h3>
-                <div class="formCons-in-touch specialization">
-                    <div class="contact-form col">
-                        <div class="form-field col" style="width: 100%;">
-                            <input id="skills" name="skills" class="input-text js-input" type="text" required>
-                            <label class="label" for="skills">Навыки работника</label>
-                        </div>
-                        <div class="form-field col" style="width: 100%;">
-                            <input id="category" name="category" class="input-text js-input" type="text" required>
-                            <label class="label" for="category">Категория работника</label>
-                        </div>
-                    </div>
+                    <?php
+                    $userid = $_SESSION['user']['id'];
+                    $queryRequests = "SELECT * FROM Requests WHERE client_id = '$userid'";
+                    $resultReq = mysqli_query($connect, $queryRequests);
+                    $countReqRow =  mysqli_num_rows($resultReq);
+                    if (mysqli_num_rows($resultReq) > 0):
+                    ?>
+                        <?php while ($row = mysqli_fetch_assoc($resultReq)):
+
+                            // Декодируем JSON-массив
+                            $skillsArray = json_decode($row['skills'], true);
+
+                            // Проверка на валидность массива
+                            if (!is_array($skillsArray)) {
+                                $skillsArray = [];
+                            }
+
+                            // Получаем только первые 3 навыка
+                            $skills = array_slice($skillsArray, 0, 3);
+
+
+                        ?>
+                            <div class="applications-item">
+
+
+                                <div class="applications-description">
+                                    <h2 style="width: 300px;"><?php echo $row['position']; ?></h2>
+                                    <div>
+                                        <div class="item-info">
+                                            <span>Дата создания: <?php echo $row['createdAt']; ?></span>
+                                        </div>
+                                        <ul class='list-style-one mdl-tabs__panel-text'>
+                                            <?php foreach ($skills as $skill): ?>
+                                                <li><?= htmlspecialchars(trim($skill)) ?></li>
+                                            <?php endforeach; ?>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        <?php endwhile; ?>
+                    <?php else: ?>
+                        <p>Нет активных заявкок</p>
+                    <?php endif; ?>
+
+
+
                 </div>
-                <div class="specialists-items">
+                        
+
+                <div class="selected-specialists">
+                    <h3>Подобранные специалисты</h3>
+                    <?php if($countReqRow > 0): ?>
+                    <div class="formCons-in-touch specialization">
+                        <div class="contact-form col">
+                            <div class="form-field col" style="width: 100%;">
+                                <input id="skills" name="skills" class="input-text js-input" type="text" required>
+                                <label class="label" for="skills">Навыки работника</label>
+                            </div>
+                            <div class="form-field col" style="width: 100%;">
+                                <input id="category" name="category" class="input-text js-input" type="text" required>
+                                <label class="label" for="category">Категория работника</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <?php
+                    $query = "SELECT id, nameSername, skills, position, salary, photo_path FROM ContactForm WHERE status = 'job'";
+                    $result = mysqli_query($connect, $query);
+
+                    // Проверка результата
+                    if (mysqli_num_rows($result) > 0): ?>
+                        <div class="specialists-items">
+                            <?php while ($row = mysqli_fetch_assoc($result)):
+
+                                // Декодируем JSON-массив
+                                $skillsArray = json_decode($row['skills'], true);
+
+                                // Проверка на валидность массива
+                                if (!is_array($skillsArray)) {
+                                    $skillsArray = [];
+                                }
+
+                                // Получаем только первые 3 навыка
+                                $skills = array_slice($skillsArray, 0, 3);
+
+                                // Фото
+                                $photo = !empty($row['photo_path']) ? htmlspecialchars($row['photo_path']) : 'assets/img/avatar/default.jpg';
+                            ?>
+                                <div class="specialization-item" data-position="<?= htmlspecialchars(strtolower($row['position'])) ?>"
+                                    data-skills="<?= htmlspecialchars(strtolower(implode(',', $skills))) ?>">
+                                    <div class="item-img">
+                                        <img src="<?= $photo ?>" alt="Фото <?= htmlspecialchars($row['nameSername']) ?>">
+                                    </div>
+                                    <div class="item-description">
+                                        <h2 style="width: 300px;"> <a href='specialist-vacancy.php?id=<?php echo $row['id']; ?>'><?= htmlspecialchars($row['nameSername']) ?></a></h2>
+                                        <div>
+                                            <div class="item-info">
+                                                <span><?= htmlspecialchars($row['position']) ?></span>
+                                                <span><?= number_format($row['salary'], 0, ',', ' ') ?> ₽ (руб/мес)</span>
+                                            </div>
+                                            <ul class="list-style-one mdl-tabs__panel-text">
+                                                <?php foreach ($skills as $skill): ?>
+                                                    <li><?= htmlspecialchars(trim($skill)) ?></li>
+                                                <?php endforeach; ?>
+                                            </ul>
+                                            <?php
+                                            $specId = $row['id'];
+                                            $queryState = "SELECT * FROM inviteClientSpec WHERE client_id = '$userid' AND spec_id = '$specId' ";
+                                            $res = mysqli_query($connect, $queryState);
+                                            $res1 = mysqli_fetch_assoc($res);
+
+                                            if (mysqli_num_rows($res) == 0):
+                                            ?>
+                                                <form method="POST" action="back/request/inviteSpec.php">
+                                                    <div class="button-container">
+                                                        <button class="submit-btn accept-btn" type="submit">Пригласить</button>
+                                                        <input hidden name='id_spec' value="<?php echo $row['id'] ?>">
+                                                        <input hidden name='id_client' value="<?php echo $_SESSION['user']['id'] ?>">
+
+                                                        <select name='idPosition'>
+                                                            <?php
+                                                            $queryRequests = "SELECT * FROM Requests WHERE client_id = '$userid'";
+                                                            $resultReq = mysqli_query($connect, $queryRequests);
+
+                                                            while ($row = mysqli_fetch_assoc($resultReq)): ?>
+                                                                <option value="<?php echo $row['id']; ?>"><?php echo htmlspecialchars($row['position']) ?></option>
+                                                            <?php endwhile; ?>
+
+                                                        </select>
+                                                    </div>
+                                                </form>
+                                            <?php elseif ($res1['status'] == "invited"): ?>
+                                                <div class="button-container">
+                                                    <button style="background-color:darkslategray;" class="submit-btn accept-btn" type="submit" disabled>Приглашен</button>
+                                                </div>
+                                            <?php else: ?>
+                                                <div class="button-container">
+                                                    <button style="background-color: green;" class="submit-btn accept-btn" type="submit" disabled>Принят</button>
+                                                </div>
+                                            <?php endif; ?>
+                                            <?php
+                                            ?>
+                                        </div>
+                                    </div>
+                                </div>
+                            <?php endwhile; ?>
+                        </div>
+                    <?php else: ?>
+                        <p>Нет доступных специалистов.</p>
+                    <?php endif; ?>
+
+                    <!-- <div class="specialists-items">
                     <div class="specialization-item">
                         <div class="item-img">
                             <img src='assets/img/avatar/candidates/75464be07ac80dff176eef75361f2685.jpg' alt='Фото $nameSername'>
@@ -177,99 +240,11 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="specialization-item">
-                        <div class="item-img">
-                            <img src='assets/img/avatar/candidates/75464be07ac80dff176eef75361f2685.jpg' alt='Фото $nameSername'>
-                        </div>
-                        <div class="item-description">
-                            <h2 style="width: 300px;">Ростокин Владислав</h2>
-                            <div>
-                                <div class="item-info">
-                                    <span>Frontend-разработчик</span>
-                                    <span>80 000 ₽ (руб/мес)</span>
-                                </div>
-                                <ul class='list-style-one mdl-tabs__panel-text'>
-                                    <li>Adobe Photoshop</li>
-                                    <li>Angular</li>
-                                    <li>Bootstrap</li>
-                                </ul>
-                                <div class="button-container">
-                                    <button class="submit-btn accept-btn">Принять</button>
-                                    <button class="submit-btn reject-btn">Отклонить</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="specialization-item">
-                        <div class="item-img">
-                            <img src='assets/img/avatar/candidates/75464be07ac80dff176eef75361f2685.jpg' alt='Фото $nameSername'>
-                        </div>
-                        <div class="item-description">
-                            <h2 style="width: 300px;">Ростокин Владислав</h2>
-                            <div>
-                                <div class="item-info">
-                                    <span>Frontend-разработчик</span>
-                                    <span>80 000 ₽ (руб/мес)</span>
-                                </div>
-                                <ul class='list-style-one mdl-tabs__panel-text'>
-                                    <li>Adobe Photoshop</li>
-                                    <li>Angular</li>
-                                    <li>Bootstrap</li>
-                                </ul>
-                                <div class="button-container">
-                                    <button class="submit-btn accept-btn">Принять</button>
-                                    <button class="submit-btn reject-btn">Отклонить</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="specialization-item">
-                        <div class="item-img">
-                            <img src='assets/img/avatar/candidates/75464be07ac80dff176eef75361f2685.jpg' alt='Фото $nameSername'>
-                        </div>
-                        <div class="item-description">
-                            <h2 style="width: 300px;">Ростокин Владислав</h2>
-                            <div>
-                                <div class="item-info">
-                                    <span>Frontend-разработчик</span>
-                                    <span>80 000 ₽ (руб/мес)</span>
-                                </div>
-                                <ul class='list-style-one mdl-tabs__panel-text'>
-                                    <li>Adobe Photoshop</li>
-                                    <li>Angular</li>
-                                    <li>Bootstrap</li>
-                                </ul>
-                                <div class="button-container">
-                                    <button class="submit-btn accept-btn">Принять</button>
-                                    <button class="submit-btn reject-btn">Отклонить</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="specialization-item">
-                        <div class="item-img">
-                            <img src='assets/img/avatar/candidates/75464be07ac80dff176eef75361f2685.jpg' alt='Фото $nameSername'>
-                        </div>
-                        <div class="item-description">
-                            <h2 style="width: 300px;">Ростокин Владислав</h2>
-                            <div>
-                                <div class="item-info">
-                                    <span>Frontend-разработчик</span>
-                                    <span>80 000 ₽ (руб/мес)</span>
-                                </div>
-                                <ul class='list-style-one mdl-tabs__panel-text'>
-                                    <li>Adobe Photoshop</li>
-                                    <li>Angular</li>
-                                    <li>Bootstrap</li>
-                                </ul>
-                                <div class="button-container">
-                                    <button class="submit-btn accept-btn">Принять</button>
-                                    <button class="submit-btn reject-btn">Отклонить</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    </div> -->
+                    <?php else: ?>
+                        <p>Создайте заявку чтобы просмотреть специалистов</p>
+                    <?php endif; ?>
+
                 </div>
             </div>
 
@@ -306,5 +281,40 @@
     </footer>
 
 </body>
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const skillsInput = document.getElementById("skills");
+        const categoryInput = document.getElementById("category");
+        const cards = document.querySelectorAll(".specialization-item");
+
+        function filterCards() {
+            const skillsValue = skillsInput.value.trim().toLowerCase();
+            const categoryValue = categoryInput.value.trim().toLowerCase();
+
+            const skillTerms = skillsValue.split(/\s+/); // разбиваем по пробелам
+
+            cards.forEach(card => {
+                const cardSkills = card.getAttribute("data-skills");
+                const cardPosition = card.getAttribute("data-position");
+
+                // Проверка: все введённые навыки есть в карточке
+                const matchesSkills = skillTerms.every(term => cardSkills.includes(term));
+                const matchesPosition = categoryValue === "" || cardPosition.includes(categoryValue);
+
+                if ((skillsValue === "" || matchesSkills) && matchesPosition) {
+                    card.style.display = "flex";
+                } else {
+                    card.style.display = "none";
+                }
+            });
+        }
+
+        // Когда пользователь вводит что-то — фильтруем
+        skillsInput.addEventListener("input", filterCards);
+        categoryInput.addEventListener("input", filterCards);
+    });
+</script>
+<script src="JS/FAQ.js"></script>
+<script src="JS/FormCons.js"></script>
 
 </html>

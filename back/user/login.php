@@ -3,9 +3,9 @@ session_start();
 require_once 'helper.php';
 require_once '../connect.php';
 
-$name = $_POST['name'];
+$email = $_POST['email'];
 $pass = $_POST['password'];
-$code = $_POST['code'];
+#$code = $_POST['code'];
 $_SESSION['validation'] = [];
 $_SESSION['user'] = [];
 
@@ -14,13 +14,19 @@ $_SESSION['user'] = [];
 
 
 
-$query = mysqli_query($connect, "SELECT * FROM `users` WHERE `login` = '$name'");
+$query = mysqli_query($connect, "SELECT * FROM `users` WHERE `email` = '$email'");
 if($user = mysqli_fetch_assoc($query)) {
 
 
 if(password_verify($pass, $user['password']) ) {
     $_SESSION['user']['id'] = $user['id'];
-    redirect('/index.php');
+    $_SESSION['user']['role'] = $user['role'];
+    if($user['role'] == 'client') {
+        redirect('/client-account.php');
+    } else if($user['role'] == 'spec') {
+        redirect('/personal-account.php');
+    }
+    
 }
     errorMsg('error', 'Неверно введен пароль');
     addOldValue('name', $name); 

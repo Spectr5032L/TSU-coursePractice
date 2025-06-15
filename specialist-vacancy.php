@@ -56,7 +56,26 @@
             </nav>
         </div>
     </header>
+    <?php
+        $spec_id = htmlspecialchars($_GET['id']); 
+        $query = "SELECT * FROM CharacteristicsSpecialist WHERE IdSpec = '$spec_id'";
+        $result = mysqli_query($connect, $query);
+        $row = mysqli_fetch_assoc($result);
+        $exp = $row['ExperienceInt'];
+        $skillsJson = $row['Skils'];
+        $skillsArray = json_decode($skillsJson, true);
+        $about = $row['About'];
+        $edu = $row['Education'];
 
+        $query = "SELECT * FROM ContactForm WHERE id = '$spec_id'";
+        $result1 = mysqli_query($connect, $query);
+        $row1 = mysqli_fetch_assoc($result1);
+        $name = $row1['nameSername'];
+        $pos = $row1['position'];
+        $sal = $row1['salary'];
+        $imgpath = $row1['photo_path'];
+
+    ?>
     <main>
         <div class="main-container">
 
@@ -64,31 +83,20 @@
                 <div class="specialization-description-container">
                     <div class="specialization-description-skills">
                         <h2>Навыки</h2>
-                        <span>Dokcer, ELK, etc, GitLab, Go, Grafana, k8s, Kubernetes, PostgreSQL, SIEM, terraform</span>
+                        <?php echo "<span style='text-align: justify; line-height: 25px; color:black'>" . implode(', ', $skillsArray) . "</span>";  ?>
+                        <!-- <span>Dokcer, ELK, etc, GitLab, Go, Grafana, k8s, Kubernetes, PostgreSQL, SIEM, terraform</span> -->
                     </div>
                     <div class="specialization-description-experience">
-                        <h2>Опыт работы: 14 лет</h2>
+                        <h2>Опыт работы:  <?php echo "<span>$exp лет</span>";  ?></h2>
                         <div class="experience-item">
-                            <ul>Southbridge</ul>
-                            <span>Стажер - Апрель 2021 — Июнь 2021</span><br>
-                            <span>Стажировка по направлению DevOps.</span>
-                            <span>Во время стажировки были работы по установке и поддержке кластеров Kubernetes и Ceph, cистем мониторинга и логирования.</span>
-                            <span>Реализован процесс CI / CD на основе Gitlab.</span>
-                            <span>Реализован мониторинг (Grafana + Prometheus), для логирования использовался EFK.</span>
+                            <h2>Образование: <span style="text-align: justify; color:black"><?php echo $edu ?></span></h2>
                         </div>
-                        <div class="experience-item" style="padding: 0;"> <!-- На последний div нужно добавить стиль который будет убирать отступы, чтобы отступы от div и ul не усиливали друг-друга -->
-                            <ul>QZhub</ul>
-                            <span>DevOps - Октябрь 2020 — Июль 2021</span><br>
-                            <span>Установка и поддержка Kubernetes</span>
-                            <span>Миграция в Kubernetes</span>
-                            <span>Реализация и поддержка CI / CD в Gitlab</span>
-                            <span>Написание helm chart'ов</span>
-                            <span>Поддержка линукс</span>
-                            <span>Реализаци систем мониторинга и логирования</span>
-                            <span>Git · PostgreSQL · Docker · Nginx · Kubernetes · Gitlab · Методологии CI / CD · Bash</span>
+                        <div class="experience-item" style="padding: 0; margin-top:-40px"> <!-- На последний div нужно добавить стиль который будет убирать отступы, чтобы отступы от div и ul не усиливали друг-друга -->
+                            <h2>Информация о специалисте: </h2>
+                            <span style="text-align: justify; line-height: 25px; color:black; text-indent: 20px;"><?php echo $about ?></span>
                         </div>
                     </div>
-                    <div class="specialization-description-education">
+                    <!-- <div class="specialization-description-education">
                         <h2>Образование</h2>
                         <span>Институт физики высоких технологий, Техника высоких направлений / Физика и астрономия</span>
                     </div>
@@ -97,19 +105,19 @@
                         <span>Внедряю передовые практики для оптимизации процессов разработки и повышения надежности инфраструктуры.</span>
                         <span>Активно изучаю технологии искусственного интеллекта и машинного обучения.</span>
                         <span>Участвую в развитии сообществ DevOps и облачной инженерии.</span>
-                    </div>
+                    </div> -->
                 </div>
 
                 <div class="specialization-card">
                     <div class="item-img">
-                        <img style="margin-bottom: 20px;" src='assets/img/avatar/candidates/75464be07ac80dff176eef75361f2685.jpg' alt='Фото $nameSername'>
+                        <img style="margin-bottom: 20px;" src='<?php echo $imgpath ?>' alt='Фото $nameSername'>
                     </div>
                     <div class="item-description">
-                        <h2>Ростокин Владислав</h2>
+                        <h2><?php echo $name ?></h2>
                         <div>
                             <div class="item-info">
-                                <span>Frontend-разработчик</span>
-                                <span>80 000 ₽ (руб/мес)</span>
+                                <span><?php echo $pos ?></span>
+                                <span><?php echo $sal ?> (руб/мес)</span>
                             </div>
                         </div>
                     </div>

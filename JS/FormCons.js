@@ -1,4 +1,4 @@
-$('.js-input').keyup(function () {
+$(document).on('keyup', '.js-input', function() {
     if ($(this).val()) {
         $(this).addClass('not-empty');
     } else {
@@ -6,12 +6,20 @@ $('.js-input').keyup(function () {
     }
 });
 
-$('.js-input').focus(function () {
+$(document).on('focus', '.js-input', function() {
     $(this).siblings('.label').addClass('focused');
 });
 
-$('.js-input').blur(function () {
+$(document).on('blur', '.js-input', function() {
     if (!$(this).val()) {
         $(this).siblings('.label').removeClass('focused');
     }
+});
+
+$(document).ready(function() {
+    $('.js-input').each(function() {
+        if ($(this).val()) {
+            $(this).addClass('not-empty');
+        }
+    });
 });

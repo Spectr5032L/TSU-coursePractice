@@ -37,6 +37,7 @@
             </div>
             <nav role="navigation" class="primary-navigation">
                 <ul>
+                    <li><a href="redirect.php">Личный кабинет</a></li>
                     <li><a href="index.php">Компаниям &dtrif;</a>
                         <ul class="dropdown">
                             <li><a href="index.php#specialization">Специализации</a></li>
@@ -71,33 +72,27 @@
 
             <div class="formCons-in-touch specialization">
                 <div class="contact-form col">
-                    <div class="form-field col x-100 align-center">
-                            <input class="filter-btn" type="submit" value="Фильтр по витрине">
-                    </div>
-
                     <div class="form-field col x-100">
-                        <input id="city" name="city" class="input-text js-input" type="text" required>
-                        <label class="label" for="city">Навыки работника</label>
+                        <input id="skillsFilter" name="skills" class="input-text js-input" type="text" >
+                        <label class="label" for="skills">Навыки работника</label>
                     </div>
                     <div class="form-field col x-100">
-                        <input id="salary" name="salary" class="input-text js-input" type="text" required>
-                        <label class="label" for="salary">Категория работника</label>
-                    </div>
-                    <div class="form-field col x-100">
-                        <input id="salary" name="salary" class="input-text js-input" type="text" required>
-                        <label class="label" for="salary">Лет опыта</label>
+                        <input id="categoryFilter" name="category" class="input-text js-input" type="text">
+                        <label class="label" for="category">Категория работника</label>
                     </div>
                 </div>
             </div>
 
-            <div class="specialization-cards">
+            <div class="specialization-cards" id="specialistsContainer">
                 <?php
-                // Выполняем запрос к базе данных для получения кандидатов со статусом "job"
-                $query = "SELECT nameSername, skills, position, salary, photo_path FROM ContactForm WHERE status = 'job'";
+                require_once 'back/connect.php';
+                
+                $query = "SELECT id, nameSername, skills, position, salary, photo_path FROM ContactForm WHERE status = 'job'";
                 $result = mysqli_query($connect, $query);
 
                 if ($result) {
                     while ($row = mysqli_fetch_assoc($result)) {
+                        $id_spec = htmlspecialchars($row['id']);
                         $nameSername = htmlspecialchars($row['nameSername']);
                         $skillsJson = $row['skills'];
                         $position = htmlspecialchars($row['position']);
@@ -107,21 +102,24 @@
                         // Декодируем JSON строку с навыками
                         $skillsArray = json_decode($skillsJson, true);
                         $skillsList = '';
+                        $skillsData = '';
+                        
                         if (is_array($skillsArray)) {
                             foreach ($skillsArray as $skill) {
                                 $skillsList .= "<li>" . htmlspecialchars($skill) . "</li>";
+                                $skillsData .= htmlspecialchars(strtolower($skill)) . ' ';
                             }
                         }
 
-                        // Создаем HTML-блок для каждого кандидата
-                        // <p>Навыки:</p>
                         echo "
-                        <div class='specialization-item'>
+                        <div class='specialization-item' 
+                             data-position='".htmlspecialchars(strtolower($position))."' 
+                             data-skills='".trim($skillsData)."'>
                             <div class='item-img'>
                                 <img src='$photo_path' alt='Фото $nameSername'>
                             </div>
                             <div class='item-description'>
-                                <h2 style='width: 300px;'>$nameSername</h2>
+                                <a href='specialist-vacancy.php?id=$id_spec'><h2 style='width: 300px;'>$nameSername</h2></a>
                                 <div>
                                     <div class='item-info'>
                                         <span>$position</span>
@@ -137,8 +135,6 @@
                 } else {
                     echo "<p>Ошибка загрузки данных: " . mysqli_error($connect) . "</p>";
                 }
-
-                // Закрываем соединение с базой данных
                 mysqli_close($connect);
                 ?>
             </div>
@@ -171,7 +167,44 @@
             <a class="footer-up" href="#header">Наверх <span>↑</span></a>
         </div>
     </footer>
+<script>
+    $(document).ready(function() {
+        // Функция фильтрации
+        function filterSpecialists() {
+            var skillsFilter = $('#skillsFilter').val().toLowerCase();
+            var categoryFilter = $('#categoryFilter').val().toLowerCase();
+            
+            $('.specialization-item').each(function() {
+                var itemSkills = $(this).data('skills');
+                var itemPosition = $(this).data('position');
+                var showItem = true;
+                
+                // Фильтрация по навыкам (если поле не пустое)
+                if (skillsFilter && itemSkills.indexOf(skillsFilter) === -1) {
+                    showItem = false;
+                }
+                
+                // Фильтрация по категории (если поле не пустое)
+                if (categoryFilter && itemPosition.indexOf(categoryFilter) === -1) {
+                    showItem = false;
+                }
+                
+                // Показываем/скрываем элемент
+                $(this).toggle(showItem);
+            });
+        }
 
+        // Фильтрация при вводе текста (с небольшой задержкой для производительности)
+        var filterTimeout;
+        $('#skillsFilter, #categoryFilter').on('input', function() {
+            clearTimeout(filterTimeout);
+            filterTimeout = setTimeout(filterSpecialists, 300);
+        });
+
+        // Инициализация - показываем все элементы при загрузке
+        filterSpecialists();
+    });
+    </script>
 </body>
 
 </html>
